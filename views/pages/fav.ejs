@@ -10,11 +10,15 @@
     <main>
         <div>
             <% result.forEach (obj => { %>
-                <section >
+                <section>
+
                     <a href=" <%= obj.url %> "><h1> <%= obj.title %> </h1></a>
                     <img src=" <%= obj.image %> " alt="">
                     <p> <%= obj.description %></p>
-
+                    
+                    <form action="/fav/<%= obj.id%>?_method=DELETE" method="POST">
+                        <button type="submit"> delete </button>
+                    </form>
                 </section>
             <% }); %>
         </div>

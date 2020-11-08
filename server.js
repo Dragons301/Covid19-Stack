@@ -46,6 +46,16 @@ app.get('/', HomePage);
 app.get('/news',getNews);
 app.post('/news',saveToDB);
 app.get('/fav',showFav);
+app.delete('/fav/:id',deleteFav);
+
+function deleteFav(req,res){
+  const id=req.params.id;
+  const sql = 'delete from news where id=$1;';
+  client.query(sql,[id]).then(()=>{
+    res.redirect('/fav');
+  });
+
+}
 
 
 function showFav (req,res) {
