@@ -35,7 +35,6 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(methodOverride('_method'));
-const e = require('express');
 const pg = require('pg');
 const Database = process.env.DATABASE_URL;
 console.log(Database);
@@ -59,30 +58,30 @@ function signUp(req, res) {
 }
 
 function check(req, res) {
-  const { user, pass, cPass } = req.body
+  const { user, pass, cPass } = req.body;
   if (pass === cPass) {
     const url = 'select * from Users where username=$1;';
     client.query(url, [user]).then((data) => {
       console.log('here');
       if (data.rows.length === 0) {
         bcrypt.hash(pass, saltRounds, (err, hash) => {
-          const insertSql = 'insert into Users (username,password) values ($1,$2);'
+          const insertSql = 'insert into Users (username,password) values ($1,$2);';
           client.query(insertSql, [user, hash]).then(()=>{
 
-            res.render('pages/sign', { result: 'You sign up successfully'})
-          })
+            res.render('pages/sign', { result: 'You sign up successfully'});
+          });
 
         });
       }
       else {
-        res.render('pages/sign', { result: 'Username Already exists' })
+        res.render('pages/sign', { result: 'Username Already exists' });
 
       }
 
-    })
+    });
   }
   else {
-    res.render('pages/sign', { result: 'The pwassword does not match' })
+    res.render('pages/sign', { result: 'The pwassword does not match' });
   }
 }
 
@@ -236,7 +235,7 @@ function Covid(data) {
 
 }
 
-console.log(PORT)
+console.log(PORT);
 client.connect().then(() => {
   app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
