@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('../layout/head')  %>
+</head>
+
+<body>
+    <%- include ('../layout/header') %>
+    <main>
+        <div>
+            <% result.forEach (obj => { %>
+                <section >
+                    <a href=" <%= obj.url %> "><h1> <%= obj.title %> </h1></a>
+                    <img src=" <%= obj.image %> " alt="">
+                    <p> <%= obj.description %></p>
+
+                </section>
+            <% }); %>
+        </div>
+
+
+    </main>
+    <%- include ('../layout/footer') %>
+</body>
+
+</html>
