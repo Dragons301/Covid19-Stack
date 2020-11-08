@@ -1,5 +1,5 @@
 {
-  "name": "Covid19-Stack",
+  "name": "covid19-stack",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "install": "^0.13.0",
     "method-override": "^3.0.0",
+    "modules": "^0.4.0",
     "nodemon": "^2.0.6",
     "pg": "^8.4.2",
     "superagent": "^6.1.0"
