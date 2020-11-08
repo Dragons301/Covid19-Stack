@@ -35,10 +35,8 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(methodOverride('_method'));
-const e = require('express');
 const pg = require('pg');
 const Database = process.env.DATABASE_URL;
-console.log(Database);
 const client = new pg.Client(Database);
 
 app.use(cors());
@@ -54,35 +52,34 @@ app.get('/signUp', signUp);
 app.post('/signUp', check);
 
 function signUp(req, res) {
-  res.render('pages/sign',{result:""});
+  res.render('pages/sign',{result:''});
 
 }
 
 function check(req, res) {
-  const { user, pass, cPass } = req.body
+  const { user, pass, cPass } = req.body;
   if (pass === cPass) {
     const url = 'select * from Users where username=$1;';
     client.query(url, [user]).then((data) => {
-      console.log('here');
       if (data.rows.length === 0) {
         bcrypt.hash(pass, saltRounds, (err, hash) => {
-          const insertSql = 'insert into Users (username,password) values ($1,$2);'
+          const insertSql = 'insert into Users (username,password) values ($1,$2);';
           client.query(insertSql, [user, hash]).then(()=>{
 
-            res.render('pages/sign', { result: 'You sign up successfully'})
-          })
+            res.render('pages/sign', { result: 'You sign up successfully'});
+          }).catch(()=>res.render('pages/error',{result:'Error in Line 68'}));
 
         });
       }
       else {
-        res.render('pages/sign', { result: 'Username Already exists' })
+        res.render('pages/sign', { result: 'Username Already exists' });
 
       }
 
-    })
+    }).catch(()=>res.render('pages/error',{result:'Error in Line 62'}));
   }
   else {
-    res.render('pages/sign', { result: 'The pwassword does not match' })
+    res.render('pages/sign', { result: 'The pwassword does not match' });
   }
 }
 
@@ -91,14 +88,14 @@ function deleteFav(req, res) {
   const sql = 'delete from news where id=$1;';
   client.query(sql, [id]).then(() => {
     res.redirect('/fav');
-  });
+  }).catch(()=>res.render('pages/error',{result:'Error in Line 90'}));
 
 }
 
 
 function showFav(req, res) {
   const sql = 'select * from news;';
-  client.query(sql).then(data => res.render('pages/fav', { result: data.rows }));
+  client.query(sql).then(data => res.render('pages/fav', { result: data.rows })).catch(()=>res.render('pages/error',{result:'Error in Line 99'}));
 }
 
 
@@ -121,7 +118,7 @@ function saveToDB(req, res) {
     } else {
       res.redirect('/news');
     }
-  });
+  }).catch(()=>res.render('pages/error',{result:'Error in Line 112'}));
 
 }
 
@@ -145,18 +142,14 @@ function getNews(req, res) {
 
   let all = [];
   superagent.get(url).query(parameter).then(data => {
-    console.log(data.body.news.length);
     for (let i = 0; i < data.body.news.length; i++) {
-      console.log('-------------------------------------------');
-      console.log(data.body.news[i]);
-
       all.push(new News(data.body.news[i]));
       if (i === 9) break;
     }
     res.render('pages/news', { result: all });
 
-  }).catch((error) => {
-    console.log(error);
+  }).catch(() => {
+    res.render('pages/error',{result:'No News Avaliable'});
   });
 }
 
@@ -172,7 +165,6 @@ function News(data) {
 function getApiInfo(req, res) {
   const country = req.body.country;
   const date = req.body.date;
-  console.log(date);
   let covid;
   let find = false;
 
@@ -196,17 +188,24 @@ function getApiInfo(req, res) {
         covid.TotalRecovered = data.body.TotalRecovered;
         res.render('pages/show', { result: covid });
 
+      }).catch(()=>
+      {
+        res.render('pages/error',{result:'No data found on totalApi'});
       });
 
     }
     else {
-      res.render('pages/error');
+      res.render('pages/error',{result:'No data of this date yet'});
     }
 
 
 
 
 
+
+  }).catch(()=>
+  {
+    res.render('pages/error',{result:'No data found ,Try again , Pls make sure you insert right input'});
 
   });
 
@@ -236,10 +235,9 @@ function Covid(data) {
 
 }
 
-console.log(PORT)
 client.connect().then(() => {
   app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
   });
 
-});
+}).catch(()=>(console.log('No Connection on DataBase')));
