@@ -22,10 +22,12 @@ require('dotenv').config();
 const
   methodOverride = require('method-override'),//over write method post to delete or update
   express = require('express'),
+  bcrypt = require('bcrypt'),
+  saltRounds = 10,
   cors = require('cors'),
   app = express(),
   PORT = process.env.PORT || 3000,
-  API_NEWS=process.env.API_NEWS,
+  API_NEWS = process.env.API_NEWS,
   superagent = require('superagent');
 app.use(express.static('public')); //Diractory start point for redned
 app.set('view engine', 'ejs'); // to target all ejs files
@@ -33,54 +35,90 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(methodOverride('_method'));
+const e = require('express');
 const pg = require('pg');
-const Database=process.env.DATABASE_URL;
-
-const client=new pg.Client(Database);
+const Database = process.env.DATABASE_URL;
+console.log(Database);
+const client = new pg.Client(Database);
 
 app.use(cors());
 app.get('/', HomePage);
 app.post('/search', getApiInfo);
 app.get('/search', showForm);
 app.get('/', HomePage);
-app.get('/news',getNews);
-app.post('/news',saveToDB);
-app.get('/fav',showFav);
-app.delete('/fav/:id',deleteFav);
+app.get('/news', getNews);
+app.post('/news', saveToDB);
+app.get('/fav', showFav);
+app.delete('/fav/:id', deleteFav);
+app.get('/signUp', signUp);
+app.post('/signUp', check);
 
-function deleteFav(req,res){
-  const id=req.params.id;
+function signUp(req, res) {
+  res.render('pages/sign',{result:""});
+
+}
+
+function check(req, res) {
+  const { user, pass, cPass } = req.body
+  if (pass === cPass) {
+    const url = 'select * from Users where username=$1;';
+    client.query(url, [user]).then((data) => {
+      console.log('here');
+      if (data.rows.length === 0) {
+        bcrypt.hash(pass, saltRounds, (err, hash) => {
+          const insertSql = 'insert into Users (username,password) values ($1,$2);'
+          client.query(insertSql, [user, hash]).then(()=>{
+
+            res.render('pages/sign', { result: 'You sign up successfully'})
+          })
+
+        });
+      }
+      else {
+        res.render('pages/sign', { result: 'Username Already exists' })
+
+      }
+
+    })
+  }
+  else {
+    res.render('pages/sign', { result: 'The pwassword does not match' })
+  }
+}
+
+function deleteFav(req, res) {
+  const id = req.params.id;
   const sql = 'delete from news where id=$1;';
-  client.query(sql,[id]).then(()=>{
+  client.query(sql, [id]).then(() => {
     res.redirect('/fav');
   });
 
 }
 
 
-function showFav (req,res) {
+function showFav(req, res) {
   const sql = 'select * from news;';
-  client.query(sql).then( data => res.render('pages/fav', {result: data.rows}));
+  client.query(sql).then(data => res.render('pages/fav', { result: data.rows }));
 }
 
 
 
 
-function saveToDB (req,res) {
-  const {title,url,image,description} = req.body;
+function saveToDB(req, res) {
+  const { title, url, image, description } = req.body;
 
   const sql = 'insert into news (title,url,image,description) values ($1,$2,$3,$4);';
-  const saveValue = [title,url,image,description];
+  const saveValue = [title, url, image, description];
 
   let checkSql = 'select * from news where title=$1;';
-  client.query(checkSql,[title]).then(data => {
+  client.query(checkSql, [title]).then(data => {
     if (data.rows.length === 0) {
 
-      client.query(sql,saveValue).then ( () => {
+      client.query(sql, saveValue).then(() => {
         res.redirect('/news');
       });
 
-    }else {
+    } else {
       res.redirect('/news');
     }
   });
@@ -97,37 +135,37 @@ function HomePage(req, res) {
 
 }
 
-function getNews (req,res) {
+function getNews(req, res) {
   const url = `https://api.currentsapi.services/v1/search`;
   const parameter = {
     keywords: 'Covid-19',
-    apiKey :  API_NEWS,
-    category : 'health',
+    apiKey: API_NEWS,
+    category: 'health',
   };
 
   let all = [];
-  superagent.get(url).query(parameter).then ( data => {
+  superagent.get(url).query(parameter).then(data => {
     console.log(data.body.news.length);
-    for (let i = 0 ; i<data.body.news.length ; i++ ) {
+    for (let i = 0; i < data.body.news.length; i++) {
       console.log('-------------------------------------------');
       console.log(data.body.news[i]);
 
-      all.push (new News (data.body.news[i]));
-      if(i===9) break;
+      all.push(new News(data.body.news[i]));
+      if (i === 9) break;
     }
-    res.render('pages/news', {result : all} );
+    res.render('pages/news', { result: all });
 
-  }).catch ( (error) => {
+  }).catch((error) => {
     console.log(error);
   });
 }
 
 
-function News (data) {
+function News(data) {
   this.title = data.title;
   this.description = data.description;
   this.image = data.image;
-  this.url=data.url;
+  this.url = data.url;
 }
 
 
@@ -198,7 +236,7 @@ function Covid(data) {
 
 }
 
-
+console.log(PORT)
 client.connect().then(() => {
   app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
