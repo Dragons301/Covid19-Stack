@@ -17,25 +17,65 @@
 // },
 require('dotenv').config();
 
+
+
 const
+  methodOverride = require('method-override'),//over write method post to delete or update
   express = require('express'),
   cors = require('cors'),
   app = express(),
   PORT = process.env.PORT || 3000,
+  API_NEWS=process.env.API_NEWS,
   superagent = require('superagent');
-app.use(express.static('public')); //Diractory start point
-app.set('view engine', 'ejs');
+app.use(express.static('public')); //Diractory start point for redned
+app.set('view engine', 'ejs'); // to target all ejs files
 app.use(express.urlencoded({
   extended: true
 }));
-// const pg = require('pg');
-// const Database=env.process.DATEBASE_URL
-// const client=pg.Client(Database)
+app.use(methodOverride('_method'));
+const pg = require('pg');
+const Database=process.env.DATABASE_URL;
+
+const client=new pg.Client(Database);
+
 app.use(cors());
 app.get('/', HomePage);
 app.post('/search', getApiInfo);
 app.get('/search', showForm);
 app.get('/', HomePage);
+app.get('/news',getNews);
+app.post('/news',saveToDB);
+app.get('/fav',showFav);
+
+
+function showFav (req,res) {
+  const sql = 'select * from news;';
+  client.query(sql).then( data => res.render('pages/fav', {result: data.rows}));
+}
+
+
+
+
+function saveToDB (req,res) {
+  const {title,url,image,description} = req.body;
+
+  const sql = 'insert into news (title,url,image,description) values ($1,$2,$3,$4);';
+  const saveValue = [title,url,image,description];
+
+  let checkSql = 'select * from news where title=$1;';
+  client.query(checkSql,[title]).then(data => {
+    if (data.rows.length === 0) {
+
+      client.query(sql,saveValue).then ( () => {
+        res.redirect('/news');
+      });
+
+    }else {
+      res.redirect('/news');
+    }
+  });
+
+}
 
 function showForm(req, res) {
   res.render('pages/show', { result: new Covid(0) });
@@ -46,6 +86,40 @@ function HomePage(req, res) {
   res.render('pages/index');
 
 }
+
+function getNews (req,res) {
+  const url = `https://api.currentsapi.services/v1/search`;
+  const parameter = {
+    keywords: 'Covid-19',
+    apiKey :  API_NEWS,
+    category : 'health',
+  };
+
+  let all = [];
+  superagent.get(url).query(parameter).then ( data => {
+    console.log(data.body.news.length);
+    for (let i = 0 ; i<data.body.news.length ; i++ ) {
+      console.log('-------------------------------------------');
+      console.log(data.body.news[i]);
+
+      all.push (new News (data.body.news[i]));
+      if(i===9) break;
+    }
+    res.render('pages/news', {result : all} );
+
+  }).catch ( (error) => {
+    console.log(error);
+  });
+}
+
+
+function News (data) {
+  this.title = data.title;
+  this.description = data.description;
+  this.image = data.image;
+  this.url=data.url;
+}
+
 
 function getApiInfo(req, res) {
   const country = req.body.country;
@@ -115,9 +189,9 @@ function Covid(data) {
 }
 
 
-// client.connect().then(() => {
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
-  //   })
+client.connect().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Listening on port: ${PORT}`);
+  });
 
 });

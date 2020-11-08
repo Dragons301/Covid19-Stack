@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('../layout/head')  %>
+</head>
+
+<body>
+    <%- include ('../layout/header') %>
+    <main>
+    <div>
+
+        <% result.forEach (obj => { %>
+            <section>
+                <a href=" <%= obj.url %> "><h1> <%= obj.title %> </h1></a>
+                <img src=" <%= obj.image %> " alt="">
+                <p> <%= obj.description %> </p>
+
+                <form action="/news" method="POST">
+                    <input type="hidden" value="<%= obj.title %>" name="title">
+                    <input type="hidden" value="<%= obj.url %>" name="url">
+                    <input type="hidden" value="<%= obj.image %>" name="image">
+                    <input type="hidden" value="<%= obj.description %>" name="description">
+                    <button><img src="https://cdn1.iconfinder.com/data/icons/circle-outlines-colored/512/Like_Favourite_Love_Health_Heart_Favourites_Favorite-512.png" alt=""></button>
+                </form>
+            </section>
+        <% }); %>
+
+
+    </div>
+    
+
+
+    </main>
+    <%- include ('../layout/footer') %>
+</body>
+
+</html>
