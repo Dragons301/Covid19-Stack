@@ -8,18 +8,52 @@
 <body>
     <%- include ('../layout/header') %>
     <main>
-        <ul>
-            <li> <%=result.Confirmed %></li>
-            <li> <%=result.Deaths %></li>
-            <li> <%=result.TotalConfirmed %></li>
-            <li> <%=result.TotalDeaths %></li>
-            <li> <%=result.TotalRecovered %></li>
+        <form action="/search" method="POST">
+            <input type="text" name="country" placeholder="enter a countray name">
+            <input type="date" name="date" placeholder="enter a date ">
+            <button id="ShowResult" type="submit">Search</button>
+        </form>
 
-        </ul>
+        <div>
+            <section>
+                <img src="" alt="">
+                <p> <%=result.Confirmed %></p>
+            </section>
+
+            <section>
+                <img src="" alt="">
+                <p> <%=result.Deaths %></p>
+            </section>
+
+            <section>
+                <img src="" alt="">
+                <p> <%=result.Recovered %></p>
+            </section>
+
+            <section>
+                <img src="" alt="">
+                <p> <%=result.Active %></p>
+            </section>
+        </div>
+        
+        <div>
+            <section>
+                <li> <%=result.TotalConfirmed %></li>
+                <li> <%=result.TotalDeaths %></li>
+                <li> <%=result.TotalRecovered %></li>
+            </section>
+
+
+
+        </div>
+
+
 
 
     </main>
     <%- include ('../layout/footer') %>
+    <script src="../../public/js/showResult.js"></script>
+
 </body>
 
 </html>
