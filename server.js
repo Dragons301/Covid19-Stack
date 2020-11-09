@@ -1,20 +1,5 @@
 'use strict';
-// https://api.currentsapi.services/v1/search?keywords=Covid-19&apiKey=BOONpfWlotrBLHukxQ1o1LSQ7A6k6agcAnXbFWc_8mzUp8i3&category=health
-// For News
-//Data look
-// "id":"fa06eadd-294c-4f30-b72b-4713b42fcc01",
-// "title":"New Brunswick reports 3 new coronavirus cases in Fredericton region",
-// "description":"The province said the new COVID-19 cases include one individual aged 19 and under and two people in their 50s....",
-// "url":"https:\/\/globalnews.ca\/news\/7448887\/new-brunswick-coronavirus-cases-nov-7\/",
-// "author":"aalhakim",
-// "image":"https:\/\/globalnews.ca\/wp-content\/uploads\/2020\/11\/1000-2-1.jpeg?quality=85&strip=all&w=720&h=379&crop=1",
-// "language":"en",
-// "category":[
-//    "health",
-//    "lifestyle"
-// ],
-// "published":"2020-11-07 17:24:43 +0000"
-// },
+
 require('dotenv').config();
 
 
@@ -38,21 +23,67 @@ app.use(methodOverride('_method'));
 const pg = require('pg');
 const Database = process.env.DATABASE_URL;
 const client = new pg.Client(Database);
-
+let userOn;
 app.use(cors());
 app.get('/', HomePage);
 app.post('/search', getApiInfo);
 app.get('/search', showForm);
 app.get('/', HomePage);
 app.get('/news', getNews);
-app.post('/news', saveToDB);
+app.post('/news', saveToDB);//fav
 app.get('/fav', showFav);
 app.delete('/fav/:id', deleteFav);
 app.get('/signUp', signUp);
 app.post('/signUp', check);
+app.get('/signIn', signInPage);
+app.post('/signIn', signIn);
+app.get('/logout', logout);
 
 function signUp(req, res) {
-  res.render('pages/sign',{result:''});
+  res.render('pages/sign', { result: '' });
+
+}
+
+function logout(req, res) {
+  userOn = null;
+  res.redirect('/');
+}
+
+function signInPage(req, res) {
+  if (!userOn) {
+    res.render('pages/signIn', { result: '' });
+  }
+  else {
+    res.redirect('/');
+  }
+
+}
+
+function signIn(req, res) {
+  const { user, pass } = req.body;
+  const url = 'select * from Users where username=$1;';
+  client.query(url, [user]).then((data) => {
+    if (data.rows.length === 0) {
+      res.render('pages/signIn', { result: 'User does not exist' });
+    }
+    else {
+      const passDb = data.rows[0].password;
+      bcrypt.compare(pass, passDb, function (error, response) {
+        if (response) {
+          userOn = user;
+          res.redirect('/');
+        }
+        else {
+          res.render('pages/signIn', { result: 'The password is incorrect!' });
+
+        }
+
+      });
+
+    }
+  }).catch(() => console.log('here'));
+
+
 
 }
 
@@ -64,11 +95,13 @@ function check(req, res) {
       if (data.rows.length === 0) {
         bcrypt.hash(pass, saltRounds, (err, hash) => {
           const insertSql = 'insert into Users (username,password) values ($1,$2);';
-          client.query(insertSql, [user, hash]).then(()=>{
+          client.query(insertSql, [user, hash]).then(() => {
 
-            res.render('pages/sign', { result: 'You sign up successfully'});
-          }).catch(()=>res.render('pages/error',{result:'Error in Line 68'}));
-
+            res.render('pages/sign', { result: 'You sign up successfully' });
+          }).catch((error) => {
+            console.log(error);
+            res.render('pages/error', { result: 'Error in Line 68' });
+          });
         });
       }
       else {
@@ -76,7 +109,7 @@ function check(req, res) {
 
       }
 
-    }).catch(()=>res.render('pages/error',{result:'Error in Line 62'}));
+    }).catch(() => res.render('pages/error', { result: 'Error in Line 62' }));
   }
   else {
     res.render('pages/sign', { result: 'The pwassword does not match' });
@@ -88,51 +121,87 @@ function deleteFav(req, res) {
   const sql = 'delete from news where id=$1;';
   client.query(sql, [id]).then(() => {
     res.redirect('/fav');
-  }).catch(()=>res.render('pages/error',{result:'Error in Line 90'}));
+  }).catch(() => res.render('pages/error', { result: 'Error in Line 90' }));
 
 }
 
 
 function showFav(req, res) {
-  const sql = 'select * from news;';
-  client.query(sql).then(data => res.render('pages/fav', { result: data.rows })).catch(()=>res.render('pages/error',{result:'Error in Line 99'}));
+
+  const sql = 'select * from news where username=$1;';
+  client.query(sql, [userOn]).then(data => res.render('pages/fav', { result: data.rows })).catch(() => res.render('pages/error', { result: 'Error in Line 99' }));
 }
 
+// function showFavCovid(req, res) {
 
+//   const sql = 'select * from Covid where username=$1;';
+//   client.query(sql, [userOn]).then(data => res.render('pages/CovidFavCountry', { result: data.rows })).catch(() => res.render('pages/error', { result: 'Error in Line 99' }));
+// }
 
 
 function saveToDB(req, res) {
-  const { title, url, image, description } = req.body;
+  if (userOn) {
+    const { title, url, image, description } = req.body;
 
-  const sql = 'insert into news (title,url,image,description) values ($1,$2,$3,$4);';
-  const saveValue = [title, url, image, description];
+    const sql = 'insert into news (title,url,image,description,username) values ($1,$2,$3,$4,$5);';
+    const saveValue = [title, url, image, description, userOn];
 
-  let checkSql = 'select * from news where title=$1;';
-  client.query(checkSql, [title]).then(data => {
-    if (data.rows.length === 0) {
+    let checkSql = 'select * from news where title=$1;';
+    client.query(checkSql, [title]).then(data => {
+      if (data.rows.length === 0) {
 
-      client.query(sql, saveValue).then(() => {
+        client.query(sql, saveValue).then(() => {
+          res.redirect('/news');
+        });
+
+      } else {
         res.redirect('/news');
-      });
-
-    } else {
-      res.redirect('/news');
-    }
-  }).catch(()=>res.render('pages/error',{result:'Error in Line 112'}));
-
+      }
+    }).catch((error) => res.render('pages/error', { result: error }));
+  }
+  else {
+    res.redirect('signIn');
+  }
 }
+
+
+// function saveToDB(req, res) {
+//   if (userOn) {
+//     const { title, url, image, description } = req.body;
+
+//     const sql = 'insert into Covid (title,url,image,description,username) values ($1,$2,$3,$4,$5);';
+//     const saveValue = [title, url, image, description, userOn];
+
+//     let checkSql = 'select * from Covid where title=$1;';
+//     client.query(checkSql, [title]).then(data => {
+//       if (data.rows.length === 0) {
+
+//         client.query(sql, saveValue).then(() => {
+//           res.redirect('/news');
+//         });
+
+//       } else {
+//         res.redirect('/news');
+//       }
+//     }).catch((error) => res.render('pages/error', { result: error }));
+//   }
+//   else {
+//     res.redirect('signIn');
+//   }
+// }
 
 function showForm(req, res) {
   res.render('pages/show', { result: new Covid(0) });
 }
 
 function HomePage(req, res) {
-
   res.render('pages/index');
 
 }
 
 function getNews(req, res) {
+  console.log(userOn);
+
   const url = `https://api.currentsapi.services/v1/search`;
   const parameter = {
     keywords: 'Covid-19',
@@ -149,7 +218,7 @@ function getNews(req, res) {
     res.render('pages/news', { result: all });
 
   }).catch(() => {
-    res.render('pages/error',{result:'No News Avaliable'});
+    res.render('pages/error', { result: 'No News Avaliable' });
   });
 }
 
@@ -188,14 +257,13 @@ function getApiInfo(req, res) {
         covid.TotalRecovered = data.body.TotalRecovered;
         res.render('pages/show', { result: covid });
 
-      }).catch(()=>
-      {
-        res.render('pages/error',{result:'No data found on totalApi'});
+      }).catch(() => {
+        res.render('pages/error', { result: 'No data found on totalApi' });
       });
 
     }
     else {
-      res.render('pages/error',{result:'No data of this date yet'});
+      res.render('pages/error', { result: 'No data of this date yet' });
     }
 
 
@@ -203,9 +271,8 @@ function getApiInfo(req, res) {
 
 
 
-  }).catch(()=>
-  {
-    res.render('pages/error',{result:'No data found ,Try again , Pls make sure you insert right input'});
+  }).catch(() => {
+    res.render('pages/error', { result: 'No data found ,Try again , Pls make sure you insert right input' });
 
   });
 
@@ -240,4 +307,4 @@ client.connect().then(() => {
     console.log(`Listening on port: ${PORT}`);
   });
 
-}).catch(()=>(console.log('No Connection on DataBase')));
+}).catch(() => (console.log('No Connection on DataBase')));
