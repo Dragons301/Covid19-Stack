@@ -3,7 +3,6 @@
     font-size: 25px;
     width: 8em;
     height: 2em;
- 
     border-left: 0.08em solid white;
     margin-top: 0.8em;
     cursor: pointer;
@@ -18,8 +17,9 @@
 #discover-button span {
     height: 120%;
     box-sizing: border-box;
+    /* border: 0.08em solid white; */
     border: 0.08em solid white;
-     display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-family: sans-serif;

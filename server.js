@@ -95,6 +95,7 @@ function check(req, res) {
       if (data.rows.length === 0) {
         bcrypt.hash(pass, saltRounds, (err, hash) => {
           const insertSql = 'insert into Users (username,password) values ($1,$2);';
+
           client.query(insertSql, [user, hash]).then(() => {
 
             res.render('pages/sign', { result: 'You sign up successfully' });
@@ -102,6 +103,7 @@ function check(req, res) {
             console.log(error);
             res.render('pages/error', { result: 'Error in Line 68' });
           });
+
         });
       }
       else {
@@ -110,6 +112,7 @@ function check(req, res) {
       }
 
     }).catch(() => res.render('pages/error', { result: 'Error in Line 62' }));
+
   }
   else {
     res.render('pages/sign', { result: 'The pwassword does not match' });
@@ -301,6 +304,7 @@ function Covid(data) {
   this.TotalRecovered = '';
 
 }
+
 
 client.connect().then(() => {
   app.listen(PORT, () => {

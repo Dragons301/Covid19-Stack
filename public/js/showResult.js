@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 // <!-- 
 //         <ul>
 //             <li> <%=result.Confirmed %></li>
@@ -12,8 +12,3 @@
 //         </ul> -->
 
 
-
-$('#ShowResult').click(()=>{
-
-
-});
