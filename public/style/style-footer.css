@@ -8,9 +8,8 @@
     padding: 55px 50px;
     position: absolute;
     left: 0px;
-    /* top: 450vh; */
-    margin-top: 10%;
-    top: auto;
+    top: 700vh;
+
     height: 35vh;
 }
 .footer-distributed .footer-left,

@@ -8,31 +8,46 @@
 <body>
     <%- include ('../layout/header') %>
     <main>
-    <div>
+    <div id="div-news">
 
         <% result.forEach (obj => { %>
-            <section>
-                <a href=" <%= obj.url %> "><h1> <%= obj.title %> </h1></a>
-                <img src=" <%= obj.image %> " alt="">
-                <p> <%= obj.description %> </p>
+            <section id="news-section">
+                <a id="news-title" href=" <%= obj.url %> ">
+                    <h1 id="news-title"> <%= obj.title %> </h1>
+                </a>
+
+                <img id="news-img"src=" <%= obj.image %> " alt="">
+                <p id="news-p"> <%= obj.description %> </p>
 
                 <form action="/news" method="POST">
                     <input type="hidden" value="<%= obj.title %>" name="title">
                     <input type="hidden" value="<%= obj.url %>" name="url">
                     <input type="hidden" value="<%= obj.image %>" name="image">
                     <input type="hidden" value="<%= obj.description %>" name="description">
-                    <button><img src="https://cdn1.iconfinder.com/data/icons/circle-outlines-colored/512/Like_Favourite_Love_Health_Heart_Favourites_Favorite-512.png" alt=""></button>
+                    <button class="btn-secondary like-review">
+                        <i class="fa fa-heart"></i> add  </button>
                 </form>
-            </section>
+            </section>  
+                          
         <% }); %>
-
+      
 
     </div>
-    
+ 
 
 
     </main>
     <%- include ('../layout/footer') %>
+
+</section>
+
+</main>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+    integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+    crossorigin="anonymous"></script>
+    <script src="../../public/js/showResult.js"></script>
+
 </body>
 
 </html>
