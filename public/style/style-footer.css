@@ -9,6 +9,7 @@
     position: absolute;
     left: 0px;
     top: 700vh;
+
     height: 35vh;
 }
 .footer-distributed .footer-left,
@@ -29,7 +30,7 @@
     font-size: 40px;
 }
 .footer-distributed h3 span{
-    color:  #780678;
+    color:  red;
 }
 /* Footer links */
 .footer-distributed .footer-links{

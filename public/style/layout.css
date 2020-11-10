@@ -15,7 +15,8 @@
 }
 
  .slide-bar{
-     width: 90%;
+     /* width: 90%; */
+     width: 85%;
      height: 590px;
      position: absolute;
      left:49%;
@@ -34,37 +35,8 @@
     75%{background-image:url(' https://eyeofcanada.com/wp-content/uploads/2020/07/covid-19.jpg')}
     
 }
-   #home-section{
-       position: relative;
-       top:600px;
-      margin-left:175px;
 
-   
-   }
-   .section-img{
-    width: 500px;
-    height: 400px;
-}
-#top-left,#down-left{
-    float: left;
-    /* padding:30px; */
-    margin: 35px;
-    background-color:whitesmoke;
-    box-shadow: 
-    1px 1px  #5a595a,
-    3px 3px  #5a595a,
-    8px 8px #5a595a;
-}
-#top-right,#down-right{
-    clear:left;
-    float: left;
-    /* padding:30px; */
-    margin: 35px;
-  background-color:whitesmoke;
-  box-shadow: 
-  1px 1px  #5a595a,
-  3px 3px  #5a595a,
-  8px 8px #5a595a;
+
 
 }
 /* #top-right,#down-right:hover{
@@ -268,3 +240,4 @@ strong{
     }
   }
  
+

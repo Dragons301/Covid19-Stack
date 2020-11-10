@@ -4,5 +4,7 @@ CREATE TABLE News (
     title varchar (500),
     description varchar (1000),
     url varchar (1000),
-    image varchar (1000)
+    image varchar (1000),
+    username varchar (20),
+    FOREIGN KEY (username) REFERENCES Users(username)
 );

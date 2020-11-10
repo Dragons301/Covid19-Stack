@@ -1,9 +1,1 @@
-'use strict';
-
-$('#ShowResult').click(()=>{
-
-
-});
-
-
 
