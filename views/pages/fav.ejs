@@ -8,20 +8,26 @@
 <body>
     <%- include ('../layout/header') %>
     <main>
-        <div>
-            <% result.forEach (obj => { %>
-                <section>
+        <div id="div-news">
 
-                    <a href=" <%= obj.url %> "><h1> <%= obj.title %> </h1></a>
-                    <img src=" <%= obj.image %> " alt="">
-                    <p> <%= obj.description %></p>
-                    
-                    <form action="/fav/<%= obj.id%>?_method=DELETE" method="POST">
-                        <button type="submit"> delete </button>
-                    </form>
-                </section>
+            <% result.forEach (obj => { %>
+            <section id="news-section">
+                <a id="news-title" href=" <%= obj.url %> ">
+                    <h1 id="news-title"> <%= obj.title %> </h1>
+                </a>
+
+                <img id="news-img" src=" <%= obj.image %> " alt="">
+                <p id="news-p"> <%= obj.description %> </p>
+                <button class="delet-button">
+                    <i class="fa fa-trash"></i> delet </button>
+
+            </section>
+
             <% }); %>
+
+
         </div>
+
 
 
     </main>

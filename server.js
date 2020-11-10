@@ -25,6 +25,7 @@ const
   bcrypt = require('bcrypt'),
   saltRounds = 10,
   cors = require('cors'),
+  // Chart = require('chart.js'),
   app = express(),
   PORT = process.env.PORT || 3000,
   API_NEWS = process.env.API_NEWS,
@@ -50,6 +51,7 @@ app.get('/fav', showFav);
 app.delete('/fav/:id', deleteFav);
 app.get('/signUp', signUp);
 app.post('/signUp', check);
+
 
 function signUp(req, res) {
   res.render('pages/sign',{result:''});
@@ -169,13 +171,56 @@ function getApiInfo(req, res) {
   let find = false;
 
 
-
+  // let allCovid=[];
   const url = `https://api.covid19api.com/dayone/country/${country}`;
   superagent.get(url).then(data => {
     data.body.forEach(element => {
       if (date === element.Date.slice(0, 10)) {
         covid = new Covid(element);
+        // allCovid.push(covid);
         find = true;
+      //   var ctx = document.getElementById('myChart');
+      //   var country=[];
+      //   var dateArr=[];
+      //   var ConfirmedCases= [];
+      //   var DeathsCases = [];
+      //   var recoveredCases = [];
+      //   var activeCases=[];
+      //   for (var i = 0; i < covid.length; i++) {
+      //     country.push(allCovid[i].country);
+      //     console.log(country);
+      //     dateArr.push(allCovid[i].date);
+      //     ConfirmedCases.push(allCovid[i].Confirmed);
+      //     DeathsCases.push(allCovid[i].Deaths);
+      //     recoveredCases.push(allCovid[i].Recovered);
+      //     activeCases.push(allCovid[i].Active);
+      //   }
+      //   var results = new Chart(ctx, { type: 'bar', data: {
+      //     labels: country, dateArr,
+      //     datasets: [{
+      //       label: '# of  Confirmed Cases',
+      //       data: ConfirmedCases,
+      //       backgroundColor: [ '#64e45f'],
+      //       borderColor: [
+      //       ],
+      //       borderWidth: 1
+      //     },
+      //     { label: '# of Deaths cases', data: DeathsCases,
+      //       backgroundColor: [ ' rgb(16, 158, 240)' ],
+      //       borderColor: [
+      //       ],
+      //       borderWidth: 1
+      //     },
+      //     { label: '# of recovered cases', data:recoveredCases,backgroundColor: [ ' rgb(16, 158, 240)' ], borderColor: [
+      //     ],
+      //     borderWidth: 1 },
+      //     { label: '# of active cases', data:activeCases,backgroundColor: [ ' rgb(16, 158, 240)' ], borderColor: [
+      //     ],
+      //     borderWidth: 1 },
+      //     ],
+      //   },
+      //   options: {
+      //     scales: {yAxes: [{ ticks: {beginAtZero: true}}]} }});
       }
     });
 

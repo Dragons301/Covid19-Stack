@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Dragons301/Dr-Where#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "chart.js": "^2.9.4",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",

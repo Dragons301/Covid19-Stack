@@ -1,4 +1,6 @@
 
+
+
 #discover-button {
     font-size: 25px;
     width: 8em;
@@ -27,7 +29,10 @@
     transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
     transition: 0.3s; 
 }  
-
+#discover{
+  text-decoration: none;
+  color:whitesmoke;
+}
 #discover-button:hover span {
     transform: translateX(0.15em);
 }
@@ -41,3 +46,98 @@
 
 }
 
+#div-news{
+    border-top: 1px solid red;
+}
+#news-section{
+    width: 800px;
+    height: 400px;
+    margin-left: 400px;
+    display:grid;
+    grid-template-columns: repeat(2,50%);
+    grid-template-rows: repeat(3,33.3333%);
+    background-color:#eeeeee59;
+    margin:30px;
+}
+#news-img{
+    padding-top:20px;
+    padding-left:20px;
+    width: 350px;
+    height:325px;
+    grid-row: 1;
+    grid-column: 1/3;
+}
+
+
+#news-title{
+    color: #77160d;
+    font-family: helvetica;
+    text-decoration: none;
+    text-transform: uppercase;
+    grid-row: 1;
+    grid-column: 2;
+}
+#news-p{
+    grid-row: 2;
+    grid-column: 2;
+}
+#news-title:hover {
+  text-decoration: underline;
+}
+form{
+    grid-row: 3;
+    grid-column: 2;
+}
+
+#news-title:active {
+  color: black;
+}
+
+.like-review{
+    grid-row: 3;
+    grid-column: 1;
+    width: 80px;
+    height: 40px;
+    color: red;
+    font-size:18px;
+    padding:5px;
+    cursor: pointer;
+
+    background: #f3f0f1;
+    margin-bottom: 25px;
+    border-radius: 32px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+
+    }
+    .like-review:hover {
+        opacity: 1;
+        transform: rotateY(40deg);
+      }
+.delet-button{
+    grid-row: 3;
+    grid-column: 2;
+    width: 80px;
+    height: 40px;
+    color: black;
+    font-size:18px;
+    padding:5px;
+    cursor: pointer;
+    background: #f3f0f1;
+    margin-bottom: 25px;
+    border-radius: 32px;
+    text-align: center;
+    width:90px;
+    height: 40px;
+    cursor: pointer;
+}
+.delet-button:hover {
+    opacity: 1;
+    transform: rotateY(40deg);
+  }
+#just-trying{
+    margin-top: 100px;
+    width: 1300px;
+    height: 1000px;
+    margin-left:120px;
+}

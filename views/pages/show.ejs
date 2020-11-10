@@ -8,51 +8,62 @@
 <body>
     <%- include ('../layout/header') %>
     <main>
-        <form action="/search" method="POST">
-            <input type="text" name="country" placeholder="enter a countray name">
-            <input type="date" name="date" placeholder="enter a date ">
-            <button id="ShowResult" type="submit">Search</button>
+ 
+            <form id="form-discoverPage"action="/search" method="POST">
+            <label>
+                <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
+            </label>
+            <label>
+                <input class="input-discoverPage"type="date" name="date" placeholder="enter a date ">
+            </label>
+                <button class="input-discoverPage" id="ShowResult" type="submit">search</button>
+     
         </form>
-
-        <div>
-            <section>
-                <img src="" alt="">
-                <p> <%=result.Confirmed %></p>
+        <div id="covid-result">
+            <section class="section-covid">
+                <img class="covid-img"src="https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/202003/815006876.jpg"
+                    alt="">
+                <p class="covid-p"> Number of confirmed cases :<%=result.Confirmed %> </p>
             </section>
 
-            <section>
-                <img src="" alt="">
-                <p> <%=result.Deaths %></p>
+            <section class="section-covid">
+                <img class="covid-img"
+                    src="https://www.aljazeera.com/wp-content/uploads/2020/04/8de4424271c4457d9c327c26dd27eca7_18.jpeg?resize=770%2C513"
+                    alt="">
+                <p class="covid-p">Number of deaths: <%=result.Deaths %> </p>
             </section>
 
-            <section>
-                <img src="" alt="">
-                <p> <%=result.Recovered %></p>
+            <section class="section-covid">
+                <img class="covid-img"
+                    src="https://image.cnbcfm.com/api/v1/image/106378357-1581057007448gettyimages-1198897006.jpeg?v=1581057097"
+                    alt="">
+                <p class="covid-p">Number of recovered cases :<%=result.Recovered %> </p>
             </section>
 
-            <section>
-                <img src="" alt="">
-                <p> <%=result.Active %></p>
+            <section class="section-covid">
+                <img class="covid-img" src="https://images.financialexpress.com/2020/04/1-1052.jpg" alt="">
+                <p class="covid-p" >Numder of active cases: <%=result.Active %></p>
             </section>
         </div>
-        
         <div>
-            <section>
-                <li> <%=result.TotalConfirmed %></li>
-                <li> <%=result.TotalDeaths %></li>
-                <li> <%=result.TotalRecovered %></li>
-            </section>
+            <ul id="section-listCovid" >
 
-
-
+                <li class="list-covid">Total confirmed cases: <strong><%=result.TotalConfirmed %></strong></li>
+                <li class="list-covid">Total Deaths: <strong><%=result.TotalDeaths %></strong> </li>
+                <li class="list-covid">Total Recovered cases: <strong> <%=result.TotalRecovered %></strong></li>
+            </ul>
         </div>
-
-
-
-
+        <img id ="just-trying"src="https://pythonawesome.com/content/images/2020/03/covid-19.png" alt="">
+        <canvas id="myChart" width="400" height="400"></canvas>
     </main>
     <%- include ('../layout/footer') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+    integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+    crossorigin="anonymous"></script>
     <script src="../../public/js/showResult.js"></script>
+    <script>
+
+    </script>
 
 </body>
 

@@ -75,3 +75,196 @@
     transform: scale(1,1.1);
 box-shadow: 0px;
 } */
+.input-discoverPage{
+border: 0;
+outline: 0;
+font-size:15px;
+border-radius: 20px;
+padding: 15px;
+background-color: whitesmoke;
+margin:15px;
+
+}
+ #form-discoverPage{
+  margin-left: 60px;
+ }
+#ShowResult{
+    color: #77160d;
+    font-weight: bold;
+    background-color: whitesmoke;
+    font-size:18px;
+    cursor: pointer;
+    font-weight: 300;
+    width: 148px;
+    height:48px;
+    font-family: 'Goldman', cursive;
+    
+
+  }
+  #ShowResult:hover{
+      background-color:red;
+      transform: scale(1,1.11);
+  }
+
+.section-covid{
+    width:200px;
+}
+#covid-result{
+    display:flex;
+    margin-top:28px;
+    margin-right: 114px;
+    justify-content:space-around;
+
+    }
+    .covid-img{
+    width:325px;
+    height: 350px;
+    }
+
+    .covid-p{
+        border:1px solid whitesmoke;
+        width: 300px;
+        height: 50px;
+        padding:15px;
+        text-align: center;
+     box-shadow: 1px 3px 5px white ;
+    }
+  
+.list-covid{
+    display: inline-block;
+    color:whitesmoke;
+    /* padding:15px; */
+}
+strong{
+    color:  #77160d;
+    
+}
+#section-listCovid li{
+    border-right: .18em solid  #77160d;
+    font-family: "Courier";
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;  
+    margin-left:35px;
+}
+#section-listCovid li:nth-child(1) {
+    width: 23.3em;
+    -webkit-animation: type 2s steps(40, end);
+    animation: type 2s steps(40, end);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+  
+  #section-listCovid li:nth-child(2) {
+    width: 17.3em;
+    opacity: 0;
+    -webkit-animation: type2 2s steps(40, end);
+    animation: type2 2s steps(40, end);
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+  
+  #section-listCovid li:nth-child(3) {
+    width: 20.3em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
+    animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes type {
+    0% {
+      width: 0;
+    }
+    99.9% {
+      border-right: .15em solid #77160d;
+    }
+    100% {
+      border: none;
+    }
+  }
+  
+  @-webkit-keyframes type {
+    0% {
+      width: 0;
+    }
+    99.9% {
+      border-right: .15em solid #77160d;
+    }
+    100% {
+      border: none;
+    }
+  }
+  
+  @keyframes type2 {
+    0% {
+      width: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    99.9% {
+      border-right: .15em solid  #77160d;
+    }
+    100% {
+      opacity: 1;
+      border: none;
+    }
+  }
+  
+  @-webkit-keyframes type2 {
+    0% {
+      width: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    99.9% {
+      border-right: .15em solid #77160d;
+    }
+    100% {
+      opacity: 1;
+      border: none;
+    }
+  }
+  
+  @keyframes type3 {
+    0% {
+      width: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes type3 {
+    0% {
+      width: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  @-webkit-keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+ 
