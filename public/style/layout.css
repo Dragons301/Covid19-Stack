@@ -19,14 +19,29 @@ header {
   font-size: 30px;
   text-decoration: underline;
 }
+.userInput {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 35px;
+
+}
 
 /* #nav{
  margin-left: 850px;
 } */
 header{
-  margin-bottom: 70px;
+  margin-bottom:0px;
 
 }
+fieldset {
+  margin-top: 100px;
+  border: #004d66 solid 2px;
+  border-width: 15px;
+  border-radius: 84px;
+
+}
+
+
  
 .input-discoverPage{
 border: 0;
@@ -35,12 +50,13 @@ font-size:15px;
 border-radius: 20px;
 padding: 15px;
 background-color: whitesmoke;
-margin:15px;
+margin:auto;
 
 }
  #form-discoverPage{
   margin-left: 60px;
  }
+
 #ShowResult{
     color: #77160d;
     font-weight: bold;
@@ -76,29 +92,47 @@ margin:15px;
 
     .covid-p{
         border:1px solid whitesmoke;
+        color: black;
         width: 300px;
         height: 50px;
         padding:15px;
         text-align: center;
-     box-shadow: 1px 3px 5px white ;
+        box-shadow: 1px 3px 5px white ;
     }
   
 .list-covid{
-    display: inline-block;
-    color:whitesmoke;
+    color:#00F;
     /* padding:15px; */
 }
 strong{
     color:  #77160d;
     
 }
+ul#section-listCovid{
+  display: inline-block;
+  width: 50%;
+  height: auto;
+  background-color: #FFF;
+  /* margin-right: 300px; */
+}
+#world-img{
+  display: block;
+}
+#title-world{
+  color: #004d66;
+  display: inline-block;
+  font-size: 80px;
+}
+
 #section-listCovid li{
-    border-right: .18em solid  #77160d;
+   display: block;
+    /* border-right: .18em solid  #77160d; */
     font-family: "Courier";
-    font-size: 20px;
+    font-size: 30px;
     white-space: nowrap;
     overflow: hidden;  
     margin-left:35px;
+    padding: 50px;
 }
 #section-listCovid li:nth-child(1) {
     width: 23.3em;
@@ -119,6 +153,18 @@ strong{
     animation-fill-mode: forwards;
   }
   
+  #toral-record{
+    display: flex;
+    position: relative;
+    margin: auto;
+    width: 100%;
+    height: 500px;
+    /* background-color: black; */
+    /* margin-top: 100px; */
+    padding: 20px;
+
+  }
+
   #section-listCovid li:nth-child(3) {
     width: 20.3em;
     opacity: 0;
