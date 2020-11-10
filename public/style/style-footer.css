@@ -1,5 +1,9 @@
 .footer-distributed{
-    background: rgb(73, 8, 8);
+   
+background: -webkit-linear-gradient(86deg, rgb(117, 230, 218), rgb(13, 241, 130));
+background: linear-gradient(86deg, rgb(117, 230, 218), rgb(13, 241, 130));
+
+    ;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
     width: 100%;
@@ -26,17 +30,17 @@
 }
 /* The company logo */
 .footer-distributed h3{
-    color:  #FFFFFF;
+    color: #189AB4;
     /* font: normal 36px 'Open Sans', cursive; */
     margin: 0;
     font-size: 40px;
 }
-.footer-distributed h3 span{
-    color:  red;
-}
+/* .footer-distributed h3 span{
+    color: ;
+} */
 /* Footer links */
 .footer-distributed .footer-links{
-    color:  #FFFFFF;
+    color:  #189AB4;
     margin: 20px 0 12px;
     padding: 0;
 }
@@ -48,7 +52,7 @@
     color:  inherit;
 }
 .footer-distributed .footer-company-name{
-    color:  white;
+    color: #189AB4;
     font-size: 14px;
     font-weight: normal;
     margin: 0;
@@ -59,7 +63,7 @@
 }
 .footer-distributed .footer-center i{
     background-color:  #33383B;
-    color: #FFFFFF;
+    color: #189AB4;
     font-size: 25px;
     width: 38px;
     height: 38px;
@@ -75,7 +79,7 @@
 }
 .footer-distributed .footer-center p{
     display: inline-block;
-    color: #FFFFFF;
+    color: #189AB4;
   font-weight:400;
     vertical-align: middle;
     margin:0;
@@ -87,7 +91,7 @@
     line-height:2;
 }
 .footer-distributed .footer-center p a{
-    color:  white;
+    color: #189AB4;
     text-decoration: none;;
 }
 .footer-distributed .footer-links a:before {
@@ -95,7 +99,7 @@
   font-weight:300;
   font-size: 20px;
   left: 0;
-  color: #fff;
+  color:#189AB4;
   display: inline-block;
   padding-right: 5px;
 }
@@ -108,14 +112,14 @@
 }
 .footer-distributed .footer-company-about{
     line-height: 20px;
-    color:  #FFF;
+    color: #189AB4;
     font-size: 13px;
     font-weight: normal;
     margin: 0;
 }
 .footer-distributed .footer-company-about span{
     display: block;
-    color:  #FFFFFF;
+    color:  #189AB4;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -130,7 +134,7 @@
     cursor: pointer;
     border-radius: 2px;
     font-size: 20px;
-    color: #FFFFFF;
+    color: #189AB4;
     text-align: center;
     line-height: 35px;
     margin-right: 3px;
