@@ -34,19 +34,7 @@
 #discover-button:hover span {
     transform: translateX(0.15em);
 }
-#logo{
-    float: left;
-    letter-spacing: 0.5rem;
-    color: red;
-    margin-top: -68px;
-    margin-left: 68px;
-    font-family: 'Syne Mono', monospace;
 
-}
-
-#div-news{
-    border-top: 1px solid red;
-}
 #news-section{
     width: 800px;
     height: 400px;
@@ -54,8 +42,10 @@
     display:grid;
     grid-template-columns: repeat(2,50%);
     grid-template-rows: repeat(3,33.3333%);
-    background-color:#eeeeee59;
+    background-color:#ecf2f3;
     margin:30px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-size:18px;
 }
 #news-img{
     padding-top:20px;
@@ -68,15 +58,21 @@
 
 
 .news-title{
-    color: #77160d;
+  margin-top:20px;
+    color: #189AB4;
+    font-weight: 700;
     font-family: helvetica;
     text-decoration: none;
     text-transform: uppercase;
     grid-row: 1;
     grid-column: 2;
-    color:
+}
+.news-title:hover{
+  cursor: pointer;
+  text-decoration:underline ;
 }
 #news-p{
+  color: #05445E;
     grid-row: 2;
     grid-column: 2;
 }
@@ -89,7 +85,7 @@ form{
 }
 
 #news-title:active {
-  color: black;
+   color: #05445E;
 }
 
 .like-review{
@@ -113,6 +109,9 @@ form{
         opacity: 1;
         transform: rotateY(40deg);
       }
+      .like-review:focus{
+        outline: none;
+      }
 .delet-button{
     grid-row: 3;
     grid-column: 2;
@@ -129,6 +128,9 @@ form{
     width:90px;
     height: 40px;
     cursor: pointer;
+}
+.delet-button:focus{
+  outline: none;
 }
 .delet-button:hover {
     opacity: 1;
@@ -236,6 +238,7 @@ form{
   
   .login-box {
     position: relative;
+    top:36px;
     margin:auto;
     width: 400px;
     padding: 40px;
@@ -245,6 +248,7 @@ form{
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
     background: linear-gradient(#141e30, #243b55);
+
   }
   
   .login-box h1 {
@@ -263,12 +267,13 @@ form{
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.37);
     margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
     background: transparent;
+   
   }
   .login-box .user-box label {
     position: absolute;
@@ -279,6 +284,7 @@ form{
     color: #fff;
     pointer-events: none;
     transition: .5s;
+    opacity: 0.1;
   }
   
   .login-box .user-box input:focus ~ label,
