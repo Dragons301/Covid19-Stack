@@ -102,7 +102,6 @@ function check(req, res) {
 
             res.render('pages/sign', { result: 'You sign up successfully' });
           }).catch((error) => {
-            console.log(error);
             res.render('pages/error', { result: 'Error in Line 68' });
           });
 
@@ -205,7 +204,6 @@ function HomePage(req, res) {
 }
 
 function getNews(req, res) {
-  console.log(userOn);
 
   const url = `https://api.currentsapi.services/v1/search`;
   const parameter = {
@@ -229,9 +227,12 @@ function getNews(req, res) {
 
 
 function News(data) {
-  this.title = data.title;
-  this.description = data.description;
+  this.title = data.title||'No title';
+  this.description = data.description||'No description';
+
   this.image = data.image;
+  if(this.image==='None')
+    this.image='https://via.placeholder.com/400';
   this.url = data.url;
 }
 

@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include ('../layout/head') %>
+  </head>
 
-<head>
-    <%- include ('../layout/head')  %>
-</head>
-
-<body>
+  <body>
     <%- include ('../layout/header') %>
     <main>
-    <div id="div-news">
+      <div id="div-news">
+        <% let count=0 %>
+        <% result.forEach (obj => { %> 
 
-        <% result.forEach (obj => { %>
-            <section id="news-section">
-                <a id="news-title" href=" <%= obj.url %> ">
-                    <h1 id="news-title"> <%= obj.title %> </h1>
-                </a>
+        <section id="news-section">
+          <a id="<%=count %>" class="news-title" name=" <%= obj.url %> ">
+            <h1 id="<%=count %>" class="news-title"><%= obj.title %></h1>
+          </a>
 
-                <img id="news-img"src=" <%= obj.image %> " alt="">
-                <p id="news-p"> <%= obj.description %> </p>
+          <img id="news-img" src=" <%= obj.image %> " alt="" />
+          <p id="news-p"><%= obj.description %></p>
 
-                <form action="/news" method="POST">
-                    <input type="hidden" value="<%= obj.title %>" name="title">
-                    <input type="hidden" value="<%= obj.url %>" name="url">
-                    <input type="hidden" value="<%= obj.image %>" name="image">
-                    <input type="hidden" value="<%= obj.description %>" name="description">
-                    <button class="btn-secondary like-review">
-                        <i class="fa fa-heart"></i> add  </button>
-                </form>
-            </section>  
-                          
-        <% }); %>
-      
+          <form action="/news" method="POST">
+            <input type="hidden" value="<%= obj.title %>" name="title" />
+            <input type="hidden" value="<%= obj.url %>" name="url" />
+            <input type="hidden" value="<%= obj.image %>" name="image" />
+            <input
+              type="hidden"
+              value="<%= obj.description %>"
+              name="description"
+            />
+            <button class="btn-secondary like-review">
+              <i class="fa fa-heart"></i> add
+            </button>
+          </form>
+        </section>
+        <%count=count+1 %>
+         <% }); %>
 
-    </div>
- 
-
-
+        <iframe id="url" style="height: 500px; width: 500px;" src="" frameborder="1"></iframe>
+      </div>
     </main>
     <%- include ('../layout/footer') %>
 
-</section>
-
-</main>
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
     integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
     <script src="../../public/js/showResult.js"></script>
-
-</body>
-
+    <script>
+      $("a").on("click", (event) => {
+        let href = $(`#${event.target.id}`).attr("name");
+        // let id2 = $('iframe').attr(id)
+        $("#url").attr("src",href) ;
+        $("#url").show;
+      });
+    </script>
+  </body>
 </html>
