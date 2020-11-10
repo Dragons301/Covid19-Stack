@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <%- include ('../layout/head') %>
+   
     <style>
       #how-sec {
         margin-top: auto;
@@ -72,7 +74,7 @@
     </style>
   </head>
   <body>
-    <%- include ('../layout/header') %>
+    <%- include ('../layout/header2') %>
     <main>
       <section id="all">
         <section id="how-sec">
@@ -175,7 +177,7 @@
       let socialDistance = $(".how-ul li")[3];
       let vid2 = $(".how-ul li")[4];
       let vid3 = $(".how-ul li")[5];
-
+   
       $(socialDistance).on("click", () => {
         $("#defult").hide();
         $("#img-hand").hide();
@@ -183,7 +185,6 @@
         $("#img-mask").hide();
         $("video").slideDown();
       });
-
       $(maskClicklEl).on("click", () => {
         console.log(maskClicklEl);
         $("video").get(0).pause();
