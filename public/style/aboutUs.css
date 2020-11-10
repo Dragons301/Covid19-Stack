@@ -1,0 +1,46 @@
+
+*{
+    font-family: 'Montserrat', sans-serif;
+  }
+.infopage{
+    display: flex;
+    flex-direction: row;
+}
+
+  .aboutInfo{
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    
+  }
+
+.atxt {
+      color: white;
+      background-color:#05445E;
+      margin: 30px;
+      padding: 10px;
+      border-radius: 25px;
+  }
+
+  .st {
+      color: white;
+      background-color: #189AB4;
+      margin: 30px;
+      padding: 30px;
+      border-radius: 25px;
+  }
+
+.feedz {
+  
+    width: 50%;
+   
+}
+
+.feedform{
+  background-color: #75E6DA;
+  margin: 40px;
+  padding: 30px;
+  border-radius: 25px ;
+}
+
+
