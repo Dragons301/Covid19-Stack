@@ -636,6 +636,69 @@ border-radius: 25px ;
 
 
 
+/* css about us */
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+.infopage{
+  display: flex;
+  flex-direction: row;
+}
+
+.aboutInfo{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  
+}
+
+.atxt {
+    color: white;
+    background-color:#05445E;
+    margin: 30px;
+    padding: 20px;
+    border-radius: 25px;
+    font-size:47px;
+}
+
+
+.st {
+    color: white;
+    background-color: #189AB4;
+    margin: 30px;
+    padding: 30px;
+    border-radius: 25px;
+}
+
+.bee{
+    width: 75%;
+    height:   25x;
+}
+
+.feedz {
+
+  width: 50%;
+ 
+}
+
+.feedform{
+
+background-color: #75E6DA;
+margin: 40px;
+padding: 30px;
+border-radius: 25px ;
+}
+
+.feedbtn{
+width: 100%;
+border-radius: 50px;
+height: 30px;
+}
+
+
+
+
 
 
 
