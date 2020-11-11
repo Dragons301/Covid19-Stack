@@ -8,8 +8,16 @@
 <body>
     <%- include ('../layout/header') %>
     <main>
-
-        <form id="form-discoverPage" action="/search" method="POST">
+    <div id="selecDiv">
+        <label for="">Choose Way to search</label>
+        <select name="" id="select">
+            <option selected value="0">...</option>
+            <option  value="1">specific day</option>
+            <option value="2">specific period</option>
+        </select>
+    </div>
+        <form id="form-discoverPage" action="/search" method="POST" class="a">
+            <legend>Search for a specific day</legend>
             <label>Search Country : </label>
             <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
 
@@ -20,76 +28,100 @@
 
         </form>
 
+        <form id="form-discoverPage" action="/searchTo" method="POST" class="b">
+            <legend>Search in a specific period</legend>
+
+            <label>Search Country : </label>
+
+            <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
+            <label>From : </label>
+
+            <input class="input-discoverPage" type="date" name="date" placeholder="enter a start date ">
+            <label>To : </label>
+
+            <input class="input-discoverPage" type="date" name="date2" placeholder="enter end date ">
+            <button type="submit" class="input-discoverPage" id="ShowResult" type="submit">search</button>
+        </form>
+
+        <div id="show">
+
+            <%if(result.Confirmed)
+        {%>
+            <section class="userInput">
+                <h3>Country : <%=result.Country%> || </h3>
+                <h3>Date : <%=result.Date%></h3>
+            </section>
+            <%}%>
+
+ 
+
         <%if(result.Confirmed)
         {%>
-        <section class="userInput">
-            <h3>Country : <%=result.Country%> || </h3>
-            <h3>Date : <%=result.Date%></h3>
-        </section>
-        <%}%>
+            <div id="covid-result">
+
+                <section class="section-covid">
+                    <p class="covid-p"><i class="fa fa-users"></i>Number of confirmed cases
+                        <br><strong><%=result.Confirmed %> </strong> </p>
+
+                </section>
+
+                <section class="section-covid">
+
+                    <p class="covid-p"><i class="fa fa-bed"></i>Number of deaths <br><strong><%=result.Deaths %>
+                        </strong> </p>
+                </section>
+
+                <section class="section-covid">
+
+                    <p class="covid-p"> <i class="fa fa-child"></i>Number of recovered cases<strong>
+                            <%=result.Recovered %> </strong> </p>
+                </section>
+
+                <section class="section-covid">
 
 
-        <div id="covid-result">
+                    <p class="covid-p"> <i class="fa fa-bell"></i>Numder of active cases
+                        <br><strong><%=result.Active %></strong> </p>
 
-            <section class="section-covid">
-                <p class="covid-p"><i class="fa fa-bed"></i>Number of confirmed cases <br><strong><%=result.Confirmed %> </strong> </p>
+                </section>
+            </div>
+            <%}%>
 
-            </section>
+            <%if(result.Confirmed)
+            {%>
+            <fieldset>
+                <legend>
+                    <h2 id="title-world">World Record</h2>
+                </legend>
+                <div id="toral-record">
+                    <ul id="section-listCovid">
+                        <li class="list-covid">Total confirmed cases: <strong><%=result.TotalConfirmed %></strong></li>
+                        <li class="list-covid">Total Deaths: <strong><%=result.TotalDeaths %></strong> </li>
+                        <li class="list-covid">Total Recovered cases: <strong> <%=result.TotalRecovered %></strong></li>
+                    </ul>
+                    <img src="../images/bgremov.png" alt="">
+                </div>
+            </fieldset>
+            <%}%>
 
-            <section class="section-covid">
-            
-                <p class="covid-p"><i class="fa fa-bed"></i>Number of deaths <br><strong><%=result.Deaths %> </strong> </p>
-            </section>
-
-            <section class="section-covid">
-               
-                <p class="covid-p"> <i class="fa fa-child"></i>Number of recovered cases<strong> <%=result.Recovered %> </strong> </p>
-            </section>
-
-            <section class="section-covid">
-
-             
-                <p class="covid-p" > <i class="fa fa-bell"></i>Numder of active cases <br><strong><%=result.Active %></strong> </p>
-
-            </section>
         </div>
 
 
-        <fieldset>
-            <legend>
-                <h2 id="title-world">World Record</h2>
-            </legend>
-            <div id="toral-record">
-                <ul id="section-listCovid">
-                    <li class="list-covid">Total confirmed cases: <strong><%=result.TotalConfirmed %></strong></li>
-                    <li class="list-covid">Total Deaths: <strong><%=result.TotalDeaths %></strong> </li>
-                    <li class="list-covid">Total Recovered cases: <strong> <%=result.TotalRecovered %></strong></li>
-                </ul>
-                <img src="../images/bgremov.png" alt="">
-            </div>
-        </fieldset>
+        <%if(result.listConfirm)
+        {%>
+            <section id="canvas-container">
+                <canvas id="myChart"></canvas>
+            </section>
+            <%}%>
 
 
-        <form id="form-discoverPage" action="/searchTo" method="POST">
-            <label>
-                <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
-            </label>
-            <label>
-                <input class="input-discoverPage" type="date" name="date" placeholder="enter a start date ">
-            </label>
-            <label>
-                <input class="input-discoverPage" type="date" name="date2" placeholder="enter end date ">
-            </label>
-            <button type="submit" class="input-discoverPage" id="ShowResult" type="submit">search</button>
-
-        </form>
-        <section id="canvas-container">
-            <canvas id="myChart"  ></canvas>
-        </section>
        
 
+    
+      
+
         <input type="hidden" value="<%=result.listConfirm%>" id="array">
-        <input type="hidden" value="<%=result.listDate%>" id="array2">
+            <input type="hidden" value="<%=result.listDate%>" id="array2">
 
     </main>
 
