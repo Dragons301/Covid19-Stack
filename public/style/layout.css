@@ -129,7 +129,14 @@ strong{
     font-weight: bold;
     font-size:35px;
     text-align: center;
-       padding:80px;
+ 
+}
+  .section-covid strong{
+ color:  #48b781;
+ font-weight: bold;
+ font-size:35px;
+ display: block;
+ text-align: center;
 }
 ul#section-listCovid{
   display: inline-block;
