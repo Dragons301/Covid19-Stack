@@ -62,37 +62,44 @@ margin:15px;
 
 .section-covid{
     width:200px;
+ 
 }
 #covid-result{
-    display:flex;
-    margin-top:28px;
-    margin-right: 114px;
-    justify-content:space-around;
+  display: flex;
+  margin-top: 28px;
+  margin-right: 139px;
+  justify-content: space-around;
+  margin-left: 5px;
 
-    }
-    .covid-img{
-    width:325px;
-    height: 350px;
     }
 
     .covid-p{
+      font-size:20px;
        color: #05445E;
-        border:1px solid #05445E;
-        width: 300px;
-        height: 50px;
+        border:1px solid rgb(224, 221, 221);
+        width: 312px;
+        height: 75px;
         padding:15px;
-        text-align: center;
-       box-shadow: 1px 3px 5px #05445E;
+        box-shadow: 0 8px 16px 0 rgb(0 0 0 / 0%), 0 6px 20px 0 rgb(0 0 0 / 12%);
+        border-left: 4px solid  #48b781;
+        border-radius: 4px;
+    }
+   .fa-users, .fa-bed , .fa-child , .fa-bell{
+      color:#48b781;
+      padding-right: 5px;
     }
   
    .list-covid{
     display: inline-block;
     color:rgb(32, 32, 32);
-    /* padding:15px; */
+ 
 }
 strong{
-    color:  #48b781;;
-    
+    color:  #48b781;
+    font-weight: bold;
+    font-size:35px;
+    text-align: center;
+       padding:80px;
 }
 #section-listCovid li{
     border-right: .18em solid  #05445E;
