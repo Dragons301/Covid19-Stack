@@ -19,7 +19,13 @@
                 <button class="input-discoverPage" id="ShowResult" type="submit">search</button>
      
         </form>
+
+        <section" class="userInput">
+            <h3  >Country : <%=result.Country%></h3>
+            <h3  >Date :  <%=result.Date%></h3>
+        </section>
         <div id="covid-result">
+           
             <section class="section-covid">
                 <img class="covid-img"src="https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/202003/815006876.jpg"
                     alt="">
@@ -45,15 +51,21 @@
                 <p class="covid-p" >Numder of active cases: <%=result.Active %></p>
             </section>
         </div>
-        <div>
-            <ul id="section-listCovid" >
 
-                <li class="list-covid">Total confirmed cases: <strong><%=result.TotalConfirmed %></strong></li>
-                <li class="list-covid">Total Deaths: <strong><%=result.TotalDeaths %></strong> </li>
-                <li class="list-covid">Total Recovered cases: <strong> <%=result.TotalRecovered %></strong></li>
-            </ul>
-        </div>
-        <img id ="just-trying"src="https://pythonawesome.com/content/images/2020/03/covid-19.png" alt="">
+
+            <fieldset>
+                <legend><h2 id="title-world">World Record</h2></legend>
+                    <div id="toral-record">
+                        <ul id="section-listCovid" >
+                            <li class="list-covid">Total confirmed cases: <strong><%=result.TotalConfirmed %></strong></li>
+                            <li class="list-covid">Total Deaths: <strong><%=result.TotalDeaths %></strong> </li>
+                            <li class="list-covid">Total Recovered cases: <strong> <%=result.TotalRecovered %></strong></li>
+                        </ul>
+                            <img src="../images/bgremov.png" alt="">
+                    </div>
+            </fieldset>
+
+        
         <canvas id="myChart" width="400" height="400"></canvas>
     </main>
     <%- include ('../layout/footer') %>
