@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <%- include ('../layout/head')  %>
+<head>
 
+  <%- include ('../layout/head') %>
+
+
+</head>
 
 <body>
-    <%- include ('../layout/header') %>
+  <%- include ('../layout/header') %>
     <div class="infopage">
         <div class="aboutInfo">
             <div class="website">
@@ -13,10 +17,10 @@
                     Our Website
                 </h1>
                 <p class="st">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere eius pariatur dignissimos facilis?
-                    Ipsum
-                    ipsa necessitatibus amet assumenda error, quisquam voluptatum doloribus, iure perferendis fugiat
-                    perspiciatis eligendi. Earum, consequuntur aliquid.
+                    This website acts as a linking point for all news websites around the world. Our users are able to
+                    access the hottest and the latest news and add them to their favorite list. Users can view the
+                    latest numbers of covid cases with ease and in a user friendly way. The website provides users with
+                    tips to stay protected including advice provided by professionals.
                 </p>
             </div>
             <div class="guide">
@@ -24,28 +28,38 @@
                     Users Guide
                 </h1>
                 <p class="st">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere eius pariatur dignissimos facilis?
-                    Ipsum
-                    ipsa necessitatibus amet assumenda error, quisquam voluptatum doloribus, iure perferendis fugiat
-                    perspiciatis eligendi. Earum, consequuntur aliquid.
+                  Go to the main page and start discovering, sign up if you have not already, add your favorite news to your own list and stay safe.
                 </p>
             </div>
         </div>
         <div class="feedz">
 
-            <h1 class="st">
-                Contact Form
-            </h1>
-            <form class="feedform" action="/action_page.php">
-                <label for="fname">E-mail:</label>
-                <input type="text" id="fname" name="fname"><br><br>
-                <label for="lname">Suggestions:</label>
-                <input type="text" id="lname" name="lname"><br><br>
 
-                <input type="submit" value="Submit">
-            </form>
+            <h1 class="atxt">Talk to us!</h1>
+            <form class="st" action="/action_page.php">
+                <p class="">Share your thoughts to help us grow...</p>
+                <hr>
+                <label for="email"><b>What needs improving?</b></label>
+                <br>
+                <br>
+                <input class="bee" type="text" placeholder="I would like to see..." name="email" required>
+                <br>
+                <br>
+                <label for="email"><b>Please enter your e-mail.</b></label>
+                <br>
+                <br>
+                <input class="bee" type="text" placeholder="lorem@ipsum.com" name="email" required>
+                <br>
+                <br>
+                <p>By creating an account you agree to our <a href="#" style="color:#05445E">Terms & Privacy</a>.</p>
+                <button type="submit" class="feedbtn">Share my mind</button>
         </div>
+        </form>
+
+
     </div>
+    </div>
+
 
     <%- include ('../layout/footer') %>
 </body>
