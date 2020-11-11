@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap">
-    <link rel="stylesheet" href="/public/style/developerTeam.css">
-  
-    <title>Developer Team</title>
-</head>
+    <%- include ('../layout/head')  %>
+
 
 <body>
-    <header>
-        <h1>
-            head
-        </h1>
-    </header>
+    <%- include ('../layout/header') %>
 
     <div class="auTitle">
         <h1>
@@ -135,7 +127,7 @@
             <div class="member-card">
                 <div class="member-card-inner">
                     <div class="member-card-front">
-                        <img src="https://lh3.googleusercontent.com/proxy/FpDpPdFx9ScqsGJOFUG2dueTDxj3Fod9x1AK0K8tEK37F2EFh4SXHHWZyqdbACawFA1VsYAQXf58Sd1Rct_8B-gi5AidWEHb-qgg9GV0yFlpP1JZ5HAkQqC4HPyUQcWhfQ"
+                        <img id="imgTeam" src="https://lh3.googleusercontent.com/proxy/FpDpPdFx9ScqsGJOFUG2dueTDxj3Fod9x1AK0K8tEK37F2EFh4SXHHWZyqdbACawFA1VsYAQXf58Sd1Rct_8B-gi5AidWEHb-qgg9GV0yFlpP1JZ5HAkQqC4HPyUQcWhfQ"
                             alt="Member" style="width:200px;height:200px;">
                     </div>
 
@@ -161,11 +153,7 @@
 
 
 
-    <footer>
-        <h1>
-            foot
-        </h1>
-    </footer>
+    <%- include ('../layout/footer') %>
 </body>
 
 </html>

@@ -38,6 +38,81 @@ app.post('/signUp', check);
 app.get('/signIn', signInPage);
 app.post('/signIn', signIn);
 app.get('/logout', logout);
+app.get('/aboutUs', aboutUs);
+// app.post('/searchTo', getApiInfo2);
+function aboutUs(req, res) {
+  res.render('pages/aboutUs');
+}
+
+// function getApiInfo2(req, res) {
+//     const country = req.body.country;
+//     let date = req.body.date;
+//     let date2 = req.body.date2;
+//     let covid;
+//     let find = false;
+//     date = new Date(date);
+//     date.setDate(date.getDate() + 0);
+//     date2 = new Date(date2);
+//     date2.setDate(date2.getDate() + 0);
+//     date = date.toISOString();
+//     date2 = date2.toISOString();
+//     // let allCovid=[];
+//     const url = `https://api.covid19api.com/country/${country}?from=${date}&to=${date2}`;
+//     console.log(url);
+//     superagent.get(url).then(data => {
+//       data.body.forEach(element => {
+
+//         const newData = {
+//           Country: data.body[1].Country,
+//           Confirmed: data.body[1].Confirmed - data.body[0].Confirmed,
+//           Deaths: data.body[1].Deaths - data.body[0].Deaths,
+//           Recovered: data.body[1].Recovered - data.body[0].Recovered,
+//           Active: data.body[1].Active - data.body[0].Active,
+//           Lat: data.body[1].Lat,
+//           Lon: data.body[1].Lon,
+//           Date: data.body[1].Date
+
+//         };
+
+//         covid = new Covid(element);
+//         find = true;
+
+//       });
+
+//       if (find) {
+//         const url2 = 'https://api.covid19api.com/world/total';
+//         superagent.get(url2).then(data => {
+//           covid.TotalConfirmed = data.body.TotalConfirmed;
+//           covid.TotalDeaths = data.body.TotalDeaths;
+//           covid.TotalRecovered = data.body.TotalRecovered;
+//           if (newData.Date.slice(0, 10) === date.slice(0, 10))
+//             res.render('pages/show', { result: covid });
+//           else {
+//             res.render('pages/error', { result: 'No data of this date yet' });
+//           }
+
+//         }).catch(() => {
+//           res.render('pages/error', { result: 'No data found on totalApi' });
+//         });
+
+//       }
+//       else {
+//         res.render('pages/error', { result: 'No data of this date yet' });
+//       }
+
+
+
+
+
+
+//     }).catch(() => {
+//       res.render('pages/error', { result: 'No data found ,Try again , Pls make sure you insert right input' });
+
+//     });
+
+
+//   }
+
 
 
 function signUp(req, res) {
@@ -47,7 +122,7 @@ function signUp(req, res) {
 
 function logout(req, res) {
   userOn = null;
-  isOn=false;
+  isOn = false;
   res.redirect('/');
 }
 
@@ -73,8 +148,8 @@ function signIn(req, res) {
       bcrypt.compare(pass, passDb, function (error, response) {
         if (response) {
           userOn = user;
-          isOn=true;
-          res.render('pages/index',{on:isOn});
+          isOn = true;
+          res.render('pages/index', { on: isOn });
         }
         else {
           res.render('pages/signIn', { result: 'The password is incorrect!' });
@@ -194,13 +269,13 @@ function saveToDB(req, res) {
 //     res.redirect('signIn');
 //   }
 // }
-let isOn=false;
+let isOn = false;
 function showForm(req, res) {
   res.render('pages/show', { result: new Covid(0) });
 }
 
 function HomePage(req, res) {
-  res.render('pages/index',{on:isOn});
+  res.render('pages/index', { on: isOn });
 
 }
 
@@ -228,75 +303,50 @@ function getNews(req, res) {
 
 
 function News(data) {
-  this.title = data.title||'No title';
-  this.description = data.description||'No description';
+  this.title = data.title || 'No title';
+  this.description = data.description || 'No description';
 
   this.image = data.image;
-  if(this.image==='None')
-    this.image='https://via.placeholder.com/400';
+  if (this.image === 'None')
+    this.image = 'https://via.placeholder.com/400';
   this.url = data.url;
 }
 
 
 function getApiInfo(req, res) {
   const country = req.body.country;
-  const date = req.body.date;
+  let date = req.body.date;
   let covid;
   let find = false;
-
-
+  date = new Date(date);
+  date.setDate(date.getDate() + 0);
+  let date2 = new Date(date);
+  date2.setDate(date2.getDate() - 1);
+  date = date.toISOString();
+  date2 = date2.toISOString();
   // let allCovid=[];
-  const url = `https://api.covid19api.com/dayone/country/${country}`;
+  const url = `https://api.covid19api.com/country/${country}?from=${date2}&to=${date}`;
   superagent.get(url).then(data => {
-    data.body.forEach(element => {
-      if (date === element.Date.slice(0, 10)) {
-        covid = new Covid(element);
-        // allCovid.push(covid);
-        find = true;
-      //   var ctx = document.getElementById('myChart');
-      //   var country=[];
-      //   var dateArr=[];
-      //   var ConfirmedCases= [];
-      //   var DeathsCases = [];
-      //   var recoveredCases = [];
-      //   var activeCases=[];
-      //   for (var i = 0; i < covid.length; i++) {
-      //     country.push(allCovid[i].country);
-      //     console.log(country);
-      //     dateArr.push(allCovid[i].date);
-      //     ConfirmedCases.push(allCovid[i].Confirmed);
-      //     DeathsCases.push(allCovid[i].Deaths);
-      //     recoveredCases.push(allCovid[i].Recovered);
-      //     activeCases.push(allCovid[i].Active);
-      //   }
-      //   var results = new Chart(ctx, { type: 'bar', data: {
-      //     labels: country, dateArr,
-      //     datasets: [{
-      //       label: '# of  Confirmed Cases',
-      //       data: ConfirmedCases,
-      //       backgroundColor: [ '#64e45f'],
-      //       borderColor: [
-      //       ],
-      //       borderWidth: 1
-      //     },
-      //     { label: '# of Deaths cases', data: DeathsCases,
-      //       backgroundColor: [ ' rgb(16, 158, 240)' ],
-      //       borderColor: [
-      //       ],
-      //       borderWidth: 1
-      //     },
-      //     { label: '# of recovered cases', data:recoveredCases,backgroundColor: [ ' rgb(16, 158, 240)' ], borderColor: [
-      //     ],
-      //     borderWidth: 1 },
-      //     { label: '# of active cases', data:activeCases,backgroundColor: [ ' rgb(16, 158, 240)' ], borderColor: [
-      //     ],
-      //     borderWidth: 1 },
-      //     ],
-      //   },
-      //   options: {
-      //     scales: {yAxes: [{ ticks: {beginAtZero: true}}]} }});
-      }
-    });
+    // data.body.forEach(element => {
+
+
+    //   if (date.toISOString().slice(0, 10) === element.Date.slice(0, 10)) {
+
+    const newData = {
+      Country: data.body[1].Country,
+      Confirmed: data.body[1].Confirmed - data.body[0].Confirmed,
+      Deaths: data.body[1].Deaths - data.body[0].Deaths,
+      Recovered: data.body[1].Recovered - data.body[0].Recovered,
+      Active: data.body[1].Active - data.body[0].Active,
+      Lat: data.body[1].Lat,
+      Lon: data.body[1].Lon,
+      Date: data.body[1].Date
+
+    };
+
+    covid = new Covid(newData);
+    find = true;
+
 
 
     if (find) {
@@ -305,7 +355,11 @@ function getApiInfo(req, res) {
         covid.TotalConfirmed = data.body.TotalConfirmed;
         covid.TotalDeaths = data.body.TotalDeaths;
         covid.TotalRecovered = data.body.TotalRecovered;
-        res.render('pages/show', { result: covid });
+        if (newData.Date.slice(0, 10) === date.slice(0, 10))
+          res.render('pages/show', { result: covid });
+        else {
+          res.render('pages/error', { result: 'No data of this date yet' });
+        }
 
       }).catch(() => {
         res.render('pages/error', { result: 'No data found on totalApi' });
@@ -333,10 +387,10 @@ function getApiInfo(req, res) {
 
 function Covid(data) {
   this.Country = data.Country || '';
-  this.Confirmed = data.Confirmed || '';
-  this.Deaths = data.Deaths || '';
-  this.Recovered = data.Recovered || '';
-  this.Active = data.Active || '';
+  this.Confirmed = data.Confirmed || 0;
+  this.Deaths = data.Deaths || 0;
+  this.Recovered = data.Recovered || 0;
+  this.Active = data.Active || 0;
   try {
     this.Date = data.Date.slice(0, 10) || '';
   }

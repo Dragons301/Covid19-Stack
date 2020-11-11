@@ -1,4 +1,3 @@
-PORT
+package-lock.json
 node_modules
 .env
-package-lock.json

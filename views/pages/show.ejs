@@ -8,26 +8,30 @@
 <body>
     <%- include ('../layout/header') %>
     <main>
- 
-            <form id="form-discoverPage"action="/search" method="POST">
-            <label>
-                <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
-            </label>
-            <label>
-                <input class="input-discoverPage"type="date" name="date" placeholder="enter a date ">
-            </label>
-                <button class="input-discoverPage" id="ShowResult" type="submit">search</button>
-     
+
+        <form id="form-discoverPage" action="/search" method="POST">
+            <label>Search Country : </label>
+            <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
+
+            <label>Search Date : </label>
+            <input class="input-discoverPage" type="date" name="date" placeholder="enter a date ">
+
+            <button class="input-discoverPage" id="ShowResult" type="submit">search</button>
+
         </form>
 
-        <section" class="userInput">
-            <h3  >Country : <%=result.Country%></h3>
-            <h3  >Date :  <%=result.Date%></h3>
+        <section class="userInput">
+            <h3>Country : <%=result.Country%> || </h3>
+            <h3>Date : <%=result.Date%></h3>
         </section>
+
+
+
         <div id="covid-result">
-           
+
             <section class="section-covid">
-                <img class="covid-img"src="https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/202003/815006876.jpg"
+                <img class="covid-img"
+                    src="https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/202003/815006876.jpg"
                     alt="">
                 <p class="covid-p"> Number of confirmed cases :<%=result.Confirmed %> </p>
             </section>
@@ -48,34 +52,49 @@
 
             <section class="section-covid">
                 <img class="covid-img" src="https://images.financialexpress.com/2020/04/1-1052.jpg" alt="">
-                <p class="covid-p" >Numder of active cases: <%=result.Active %></p>
+                <p class="covid-p">Numder of active cases: <%=result.Active %></p>
             </section>
         </div>
 
 
-            <fieldset>
-                <legend><h2 id="title-world">World Record</h2></legend>
-                    <div id="toral-record">
-                        <ul id="section-listCovid" >
-                            <li class="list-covid">Total confirmed cases: <strong><%=result.TotalConfirmed %></strong></li>
-                            <li class="list-covid">Total Deaths: <strong><%=result.TotalDeaths %></strong> </li>
-                            <li class="list-covid">Total Recovered cases: <strong> <%=result.TotalRecovered %></strong></li>
-                        </ul>
-                            <img src="../images/bgremov.png" alt="">
-                    </div>
-            </fieldset>
+        <fieldset>
+            <legend>
+                <h2 id="title-world">World Record</h2>
+            </legend>
+            <div id="toral-record">
+                <ul id="section-listCovid">
+                    <li class="list-covid">Total confirmed cases: <strong><%=result.TotalConfirmed %></strong></li>
+                    <li class="list-covid">Total Deaths: <strong><%=result.TotalDeaths %></strong> </li>
+                    <li class="list-covid">Total Recovered cases: <strong> <%=result.TotalRecovered %></strong></li>
+                </ul>
+                <img src="../images/bgremov.png" alt="">
+            </div>
+        </fieldset>
 
-        
-        <canvas id="myChart" width="400" height="400"></canvas>
+
+        <form id="form-discoverPage" action="/searchTo" method="POST">
+            <label>
+                <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
+            </label>
+            <label>
+                <input class="input-discoverPage" type="date" name="date" placeholder="enter a start date ">
+            </label>
+            <label>
+                <input class="input-discoverPage" type="date" name="date2" placeholder="enter end date ">
+            </label>
+            <button class="input-discoverPage" id="ShowResult" type="submit">search</button>
+
+        </form>
+
+        <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
     </main>
+
     <%- include ('../layout/footer') %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-    integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
-    crossorigin="anonymous"></script>
+        integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+        crossorigin="anonymous"></script>
     <script src="../../public/js/showResult.js"></script>
-    <script>
 
-    </script>
 
 </body>
 

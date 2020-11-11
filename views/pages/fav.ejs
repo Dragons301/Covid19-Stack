@@ -47,11 +47,13 @@
                 <section>
                     <p id="news-p"><%= obj.description %></p>
                 </section>
-                <section>
-                    <button class="delet-button">
-                        <i class="fa fa-trash"></i> delete </button>
-                </section>
-                </form>
+                    <section>
+                        <form action="/fav/<%= obj.id%>?_method=DELETE" method="POST">
+                             <button class="delet-button">
+                            <i class="fa fa-trash"></i> delete </button>
+                        </form>
+                    </section>
+            
             </section>
         </section>
 
