@@ -6,32 +6,80 @@
 </head>
 
 <body>
+    <div id="popUp">
+        <section id="cancel">
+
+            <i id="cancelIcon" class="fa fa-times"></i>
+            <iframe id="url" src="" frameborder="10">
+
+            </iframe>
+        </section>
+
+
+
+    </div>
+
     <%- include ('../layout/header') %>
     <main>
-        <div id="div-news">
 
-            <% result.forEach (obj => { %>
-            <section id="news-section">
-                <a id="news-title" href=" <%= obj.url %> ">
-                    <h1 id="news-title"> <%= obj.title %> </h1>
-                </a>
 
-                <img id="news-img" src=" <%= obj.image %> " alt="">
-                <p id="news-p"> <%= obj.description %> </p>
-                <button class="delet-button">
-                    <i class="fa fa-trash"></i> delet </button>
+
+
+
+        <% let count=0 %>
+
+        <% result.forEach (obj => { %>
+        <section id="news-section">
+
+            <section>
+
+                <img id="news-img" src=" <%= obj.image %> " alt="" />
 
             </section>
 
-            <% }); %>
+            <section class="rows">
+                <section>
+
+                    <a id="<%=count %>" class="news-title" name=" <%= obj.url %> ">
+                        <h1 id="<%=count %>" class="news-title"><%= obj.title %></h1>
+                    </a>
+                </section>
+                <section>
+                    <p id="news-p"><%= obj.description %></p>
+                </section>
+                    <section>
+                        <form action="/fav/<%= obj.id%>?_method=DELETE" method="POST">
+                             <button class="delet-button">
+                            <i class="fa fa-trash"></i> delete </button>
+                        </form>
+                    </section>
+            
+            </section>
+        </section>
+
+        <%count=count+1 %>
+
+        <% }); %>
 
 
-        </div>
+
 
 
 
     </main>
     <%- include ('../layout/footer') %>
+
+    <script>
+        $("a").on("click", (event) => {
+            let href = $(`#${event.target.id}`).attr("name");
+            // let id2 = $('iframe').attr(id)
+            $("#url").attr("src", href);
+            $("#popUp").show();
+        });
+        $('#cancelIcon').on("click", (event) => {
+            $("#popUp").hide();
+        });
+    </script>
 </body>
 
 </html>

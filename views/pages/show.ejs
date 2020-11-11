@@ -8,21 +8,31 @@
 <body>
     <%- include ('../layout/header') %>
     <main>
- 
-            <form id="form-discoverPage"action="/search" method="POST">
-            <label>
-                <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
-            </label>
-            <label>
-                <input class="input-discoverPage"type="date" name="date" placeholder="enter a date ">
-            </label>
-                <button class="input-discoverPage" id="ShowResult" type="submit">search</button>
-     
+
+        <form id="form-discoverPage" action="/search" method="POST">
+            <label>Search Country : </label>
+            <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
+
+            <label>Search Date : </label>
+            <input class="input-discoverPage" type="date" name="date" placeholder="enter a date ">
+
+            <button class="input-discoverPage" id="ShowResult" type="submit">search</button>
+
         </form>
+
+        <section class="userInput">
+            <h3>Country : <%=result.Country%> || </h3>
+            <h3>Date : <%=result.Date%></h3>
+        </section>
+
+
+
         <div id="covid-result">
+
             <section class="section-covid">
+
         
-                <p class="covid-p"><i class="fa fa-users"></i> Number of confirmed cases <strong><%=result.Confirmed %> </strong> </p>
+
             </section>
 
             <section class="section-covid">
@@ -36,28 +46,57 @@
             </section>
 
             <section class="section-covid">
+
              
                 <p class="covid-p" > <i class="fa fa-bell"></i>Numder of active cases <br><strong><%=result.Active %></strong> </p>
+
             </section>
         </div>
-        <div>
-            <ul id="section-listCovid" >
 
-                <li class="list-covid">Total confirmed cases: <strong><%=result.TotalConfirmed %></strong></li>
-                <li class="list-covid">Total Deaths: <strong><%=result.TotalDeaths %></strong> </li>
-                <li class="list-covid">Total Recovered cases: <strong> <%=result.TotalRecovered %></strong></li>
-            </ul>
-        </div>
-        <img id ="just-trying"src="https://pythonawesome.com/content/images/2020/03/covid-19.png" alt="">
-        <canvas id="myChart" width="400" height="400"></canvas>
+
+        <fieldset>
+            <legend>
+                <h2 id="title-world">World Record</h2>
+            </legend>
+            <div id="toral-record">
+                <ul id="section-listCovid">
+                    <li class="list-covid">Total confirmed cases: <strong><%=result.TotalConfirmed %></strong></li>
+                    <li class="list-covid">Total Deaths: <strong><%=result.TotalDeaths %></strong> </li>
+                    <li class="list-covid">Total Recovered cases: <strong> <%=result.TotalRecovered %></strong></li>
+                </ul>
+                <img src="../images/bgremov.png" alt="">
+            </div>
+        </fieldset>
+
+
+        <form id="form-discoverPage" action="/searchTo" method="POST">
+            <label>
+                <input class="input-discoverPage" type="text" name="country" placeholder="enter a countray name">
+            </label>
+            <label>
+                <input class="input-discoverPage" type="date" name="date" placeholder="enter a start date ">
+            </label>
+            <label>
+                <input class="input-discoverPage" type="date" name="date2" placeholder="enter end date ">
+            </label>
+            <button type="submit" class="input-discoverPage" id="ShowResult" type="submit">search</button>
+
+        </form>
+
+        <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
     </main>
+
     <%- include ('../layout/footer') %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-    integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
-    crossorigin="anonymous"></script>
+        integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+        crossorigin="anonymous"></script>
     <script src="../../public/js/showResult.js"></script>
-    <script>
+    <!-- <script>
+        $('#ShowResult').on('click',()=>{
+            $('.userInput').show();
+            event.preventDefault();
 
+        }); -->
     </script>
 
 </body>

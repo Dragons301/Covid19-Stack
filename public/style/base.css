@@ -4,9 +4,20 @@ box-sizing: border-box;
 }
 body{
     background-color: #FFF;
+ 
 }
+/* #main{
+    background-image: url('../images/cor.png');
+    background-position: center;
+    background-size: cover;
+    background-position-y: 300px;
+    background-repeat: no-repeat; 
+ } */
 p{
     color:whitesmoke;
 }
 
-
+header{
+padding-bottom:30px;
+border-bottom: 3px solid  #75E6DA;
+}

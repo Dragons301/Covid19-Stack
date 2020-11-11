@@ -1,262 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include ('../layout/head') %>
-    <style>
-      #how-sec {
-        margin-top: auto;
-      }
-      .how-ul {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        width: 100%;
-      }
 
-      /* #left {
-        margin-left: 200px;
-      } */
+<head>
 
-      .how-ul li {
-        color: #fff;
-        font-size: 30px;
-        list-style: none;
-        cursor: pointer;
-        background: linear-gradient(86deg, rgb(117, 230, 218), rgb(13, 241, 130));;
-        border-radius: 50px;
-        margin: 15px;
-        width: 350px;
-        height:65px;
-        line-height: 65px;
-        text-align: center;
-      }
-      .button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-}
+  <%- include ('../layout/head') %>
 
-      .button2:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
-      #img-container {
-        margin-top: 100px;
-      }
 
-      .img-select,
-      video {
-        /* margin-left: 200px; */
-        width: 1000px;
-        height: 500px;
-        margin-left: 20%;
-        display: none;
-        border: red 2px solid;
-        /* background-color: royalblue; */
-      }
+</head>
 
-      #defult {
-        /* margin-left: 200px; */
-        width: 1000px;
-        margin-left: 20%;
-        border: red 2px solid;
-      }
-    </style>
-  </head>
-  <body>
-    <%- include ('../layout/header') %>
-    <main>
-      <section id="all">
-        <section id="how-sec">
-          <ul class="how-ul">
-            <li class="">
-              <a
-                style="text-decoration: none; color: white"
-                href="#img-container"
-                >How to wear mask</a
-              >
-            </li>
-            <li  class="">
-              <a
-                style="text-decoration: none; color: white"
-                href="#img-hand"
-                >
-               How to clean hands</a
-              >
-            </li>
-            <li  class="">
-              <a
-                style="text-decoration: none; color: white"
-                href="#img-cough"
-                >How to sneeze</a
-              >
-            </li >
-            <li  class="">
-              <a
-                style="text-decoration: none; color: white"
-                href="#vid1"
-                >Why social distance</a
-              >
-            </li>
-            <li  class="">
-              <a
-                style="text-decoration: none; color: white"
-                href="#vid2"
-                >Can Mask Protect us</a
-              >
-            </li>
-            <li  class="">
-              <a
-                style="text-decoration: none; color: white"
-                href="#vid3"
-                >7 important steps</a
-              >
-            </li>
-          </ul>
-        </section>
-
-        <section id="img-container">
-          <video id="vid1" class="img-select vid" controls>
-            <source
-              src="images/Why is it recommended to avoid close contact with anyone who has fever and cough_.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-          <video id="vid2" class="img-select" controls>
-            <source
-              src="images/Can masks protect against the new coronavirus infection_.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-          <video id="vid3" class="img-select" controls>
-            <source
-              src="images/Coronavirus - seven steps to prevent the spread of the virus.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-
-          <img
-            id="img-cough"
-            class="img-select"
-            src="https://image.freepik.com/free-vector/how-cough-sneeze-spreading-virus-man-wrong-cough-hand-correct-method-napkin-elbow-fold-preventive-measures-against-coronavirus_115464-489.jpg"
-            alt=""
-          />
-          <img id="img-hand" 
-          class="img-select" 
-          src="https://image.freepik.com/free-vector/wash-your-hands-steps-how-wash-your-hands-vector_273525-74.jpg" 
-          alt="" />
-          <img 
-          
-          id="img-mask" 
-          class="img-select" 
-          src="https://image.freepik.com/free-vector/how-wearing-face-mask-right-wrong_23-2148707898.jpg" 
-          alt="" />
-          <img id="" class="img-select" src="" alt="" />
-        </section>
+<body id="main">
+  <%- include ('../layout/header2') %>
+  <main>
+    <section id="all">
+      <section id="how-sec">
+        <ul class="how-ul">
+          <li class="">
+            <a style="text-decoration: none; color: white" href="#img-container">How to wear mask</a>
+          </li>
+          <li class="">
+            <a style="text-decoration: none; color: white" href="#img-hand">
+              How to clean hands</a>
+          </li>
+          <li class="">
+            <a style="text-decoration: none; color: white" href="#img-cough">How to sneeze</a>
+          </li>
+          <li class="">
+            <a style="text-decoration: none; color: white" href="#vid1">Why social distance</a>
+          </li>
+          <li class="">
+            <a style="text-decoration: none; color: white" href="#vid2">Can Mask Protect us</a>
+          </li>
+          <li class="">
+            <a style="text-decoration: none; color: white" href="#vid3">7 important steps</a>
+          </li>
+        </ul>
       </section>
 
-    </main>
-    <%- include ('../layout/footer') %>
-    <script>
-      let maskClicklEl = $(".how-ul li")[0];
-      let cleanClickkEl = $(".how-ul li")[1];
-      let sneezClicklEl = $(".how-ul li")[2];
-      let socialDistance = $(".how-ul li")[3];
-      let vid2 = $(".how-ul li")[4];
-      let vid3 = $(".how-ul li")[5];
+      <section id="img-container">
+        <video id="vid1" class="img-select vid" controls>
+          <source src="images/Why is it recommended to avoid close contact with anyone who has fever and cough_.mp4"
+            type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <video id="vid2" class="img-select" controls>
+          <source src="images/Can masks protect against the new coronavirus infection_.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <video id="vid3" class="img-select" controls>
+          <source src="images/Coronavirus - seven steps to prevent the spread of the virus.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-      $(socialDistance).on("click", () => {
-        $("#defult").hide();
-        $("#img-hand").hide();
-        $("#img-cough").hide();
-        $("#img-mask").hide();
-        $("video").slideDown();
-      });
+        <img id="img-cough" class="img-select"
+          src="https://image.freepik.com/free-vector/how-cough-sneeze-spreading-virus-man-wrong-cough-hand-correct-method-napkin-elbow-fold-preventive-measures-against-coronavirus_115464-489.jpg"
+          alt="" />
+        <img id="img-hand" class="img-select"
+          src="https://image.freepik.com/free-vector/wash-your-hands-steps-how-wash-your-hands-vector_273525-74.jpg"
+          alt="" />
+        <img id="img-mask" class="img-select"
+          src="https://image.freepik.com/free-vector/how-wearing-face-mask-right-wrong_23-2148707898.jpg" alt="" />
+        <img id="" class="img-select" src="" alt="" />
+      </section>
+    </section>
 
-      $(maskClicklEl).on("click", () => {
-        console.log(maskClicklEl);
-        $("video").get(0).pause();
-        $("video").get(0).currentTime = 0;
-        $("video").get(1).pause();
-        $("video").get(1).currentTime = 0;
-        $("video").get(2).pause();
-        $("video").get(2).currentTime = 0;
-        $(".img-select,#defult").hide();
-        $("#img-mask").slideDown();
-      });
+    <div class="wrap">
+      <a href="/search"><button class="button"> Discover</button></a>
+    </div>
 
-      $(cleanClickkEl).on("click", () => {
-        console.log(cleanClickkEl);
-        $("video").get(0).pause();
-        $("video").get(0).currentTime = 0;
-        $("video").get(1).pause();
-        $("video").get(1).currentTime = 0;
-        $("video").get(2).pause();
-        $("video").get(2).currentTime = 0;
-        $(".img-select,#defult").hide();
-        $("#img-hand").slideDown();
-      });
+  </main>
+  <%- include ('../layout/footer') %>
+  <script>
+    let maskClicklEl = $(".how-ul li")[0];
+    let cleanClickkEl = $(".how-ul li")[1];
+    let sneezClicklEl = $(".how-ul li")[2];
+    let socialDistance = $(".how-ul li")[3];
+    let vid2 = $(".how-ul li")[4];
+    let vid3 = $(".how-ul li")[5];
 
-      $(sneezClicklEl).on("click", () => {
-        console.log(sneezClicklEl);
-        $("video").get(0).pause();
-        $("video").get(0).currentTime = 0;
-        $("video").get(1).pause();
-        $("video").get(1).currentTime = 0;
-        $("video").get(2).pause();
-        $("video").get(2).currentTime = 0;
-        $(".img-select,#defult").hide();
-        $("#img-cough").slideDown();
-      });
+    $(socialDistance).on("click", () => {
+      $("#defult").hide();
+      $("#img-hand").hide();
+      $("#img-cough").hide();
+      $("#img-mask").hide();
+      $("video").slideDown();
+    });
+    $(maskClicklEl).on("click", () => {
+      console.log(maskClicklEl);
+      $("video").get(0).pause();
+      $("video").get(0).currentTime = 0;
+      $("video").get(1).pause();
+      $("video").get(1).currentTime = 0;
+      $("video").get(2).pause();
+      $("video").get(2).currentTime = 0;
+      $(".img-select,#defult").hide();
+      $("#img-mask").slideDown();
+    });
 
-      $(socialDistance).on("click", () => {
-        console.log(socialDistance);
-        $("video").get(0).pause();
-        $("video").get(0).currentTime = 0;
-        $("video").get(1).pause();
-        $("video").get(1).currentTime = 0;
-        $("video").get(2).pause();
-        $("video").get(2).currentTime = 0;
-        $(".img-select,#defult").hide();
-        $("#vid1").slideDown();
-      });
+    $(cleanClickkEl).on("click", () => {
+      console.log(cleanClickkEl);
+      $("video").get(0).pause();
+      $("video").get(0).currentTime = 0;
+      $("video").get(1).pause();
+      $("video").get(1).currentTime = 0;
+      $("video").get(2).pause();
+      $("video").get(2).currentTime = 0;
+      $(".img-select,#defult").hide();
+      $("#img-hand").slideDown();
+    });
 
-      $(vid2).on("click", () => {
-        console.log(socialDistance);
-        $("video").get(0).pause();
-        $("video").get(0).currentTime = 0;
-        $("video").get(1).pause();
-        $("video").get(1).currentTime = 0;
-        $("video").get(2).pause();
-        $("video").get(2).currentTime = 0;
-        $(".img-select,#defult").hide();
-        $("#vid2").slideDown();
-      });
+    $(sneezClicklEl).on("click", () => {
+      console.log(sneezClicklEl);
+      $("video").get(0).pause();
+      $("video").get(0).currentTime = 0;
+      $("video").get(1).pause();
+      $("video").get(1).currentTime = 0;
+      $("video").get(2).pause();
+      $("video").get(2).currentTime = 0;
+      $(".img-select,#defult").hide();
+      $("#img-cough").slideDown();
+    });
 
-      $(vid3).on("click", () => {
-        console.log(socialDistance);
-        $("video").get(0).pause();
-        $("video").get(0).currentTime = 0;
-        $("video").get(1).pause();
-        $("video").get(1).currentTime = 0;
-        $("video").get(2).pause();
-        $("video").get(2).currentTime = 0;
-        $(".img-select,#defult").hide();
-        $("#vid3").slideDown();
-      });
-    </script>
+    $(socialDistance).on("click", () => {
+      console.log(socialDistance);
+      $("video").get(0).pause();
+      $("video").get(0).currentTime = 0;
+      $("video").get(1).pause();
+      $("video").get(1).currentTime = 0;
+      $("video").get(2).pause();
+      $("video").get(2).currentTime = 0;
+      $(".img-select,#defult").hide();
+      $("#vid1").slideDown();
+    });
 
-    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
-  </body>
+    $(vid2).on("click", () => {
+      console.log(socialDistance);
+      $("video").get(0).pause();
+      $("video").get(0).currentTime = 0;
+      $("video").get(1).pause();
+      $("video").get(1).currentTime = 0;
+      $("video").get(2).pause();
+      $("video").get(2).currentTime = 0;
+      $(".img-select,#defult").hide();
+      $("#vid2").slideDown();
+    });
+
+    $(vid3).on("click", () => {
+      console.log(socialDistance);
+      $("video").get(0).pause();
+      $("video").get(0).currentTime = 0;
+      $("video").get(1).pause();
+      $("video").get(1).currentTime = 0;
+      $("video").get(2).pause();
+      $("video").get(2).currentTime = 0;
+      $(".img-select,#defult").hide();
+      $("#vid3").slideDown();
+    });
+  </script>
+
+  <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+</body>
+
 </html>
