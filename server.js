@@ -39,79 +39,91 @@ app.get('/signIn', signInPage);
 app.post('/signIn', signIn);
 app.get('/logout', logout);
 app.get('/aboutUs', aboutUs);
-// app.post('/searchTo', getApiInfo2);
+app.post('/searchTo', getApiInfo2);
+
 function aboutUs(req, res) {
   res.render('pages/aboutUs');
 }
 
-// function getApiInfo2(req, res) {
-//     const country = req.body.country;
-//     let date = req.body.date;
-//     let date2 = req.body.date2;
-//     let covid;
-//     let find = false;
-//     date = new Date(date);
-//     date.setDate(date.getDate() + 0);
-//     date2 = new Date(date2);
-//     date2.setDate(date2.getDate() + 0);
-//     date = date.toISOString();
-//     date2 = date2.toISOString();
-//     // let allCovid=[];
-//     const url = `https://api.covid19api.com/country/${country}?from=${date}&to=${date2}`;
-//     console.log(url);
-//     superagent.get(url).then(data => {
-//       data.body.forEach(element => {
 
-//         const newData = {
-//           Country: data.body[1].Country,
-//           Confirmed: data.body[1].Confirmed - data.body[0].Confirmed,
-//           Deaths: data.body[1].Deaths - data.body[0].Deaths,
-//           Recovered: data.body[1].Recovered - data.body[0].Recovered,
-//           Active: data.body[1].Active - data.body[0].Active,
-//           Lat: data.body[1].Lat,
-//           Lon: data.body[1].Lon,
-//           Date: data.body[1].Date
+function getApiInfo2(req, res) {
+  const country = req.body.country;
+  let date = req.body.date;
+  let date2 = req.body.date2;
 
-//         };
-
-//         covid = new Covid(element);
-//         find = true;
-
-//       });
-
-//       if (find) {
-//         const url2 = 'https://api.covid19api.com/world/total';
-//         superagent.get(url2).then(data => {
-//           covid.TotalConfirmed = data.body.TotalConfirmed;
-//           covid.TotalDeaths = data.body.TotalDeaths;
-//           covid.TotalRecovered = data.body.TotalRecovered;
-//           if (newData.Date.slice(0, 10) === date.slice(0, 10))
-//             res.render('pages/show', { result: covid });
-//           else {
-//             res.render('pages/error', { result: 'No data of this date yet' });
-//           }
-
-//         }).catch(() => {
-//           res.render('pages/error', { result: 'No data found on totalApi' });
-//         });
-
-//       }
-//       else {
-//         res.render('pages/error', { result: 'No data of this date yet' });
-//       }
+  let covid;
+  let find = false;
+  date = new Date(date);
+  date.setDate(date.getDate() - 1);
+  date2 = new Date(date2);
+  date2.setDate(date2.getDate() + 0);
+  date = date.toISOString();
+  date2 = date2.toISOString();
+  let allCovid=[];
+  const url = `https://api.covid19api.com/country/${country}?from=${date}&to=${date2}`;
+  superagent.get(url).then(data => {
+    // data.body.forEach(element => {
 
 
+    //   if (date.toISOString().slice(0, 10) === element.Date.slice(0, 10)) {
+    for (let i = 1; i < data.body.length; i++) {
+
+      const newData = {
+        Country: data.body[i].Country,
+        Confirmed: data.body[i].Confirmed - data.body[i-1].Confirmed,
+        Deaths: data.body[i].Deaths - data.body[i-1].Deaths,
+        Recovered: data.body[i].Recovered - data.body[i-1].Recovered,
+        Active: data.body[i].Active - data.body[i-1].Active,
+        Lat: data.body[i].Lat,
+        Lon: data.body[i].Lon,
+        Date: data.body[i].Date
+
+      };
+
+      covid = new Covid(newData);
+      find = true;
+      allCovid.push(covid);
+    }
+    let listConfirm=[];
+    let listDate=[];
+    allCovid.forEach(element => {
+      listConfirm.push(element.Confirmed);
+      listDate.push(element.Date);
+    });
+
+    if (find) {
+      const url2 = 'https://api.covid19api.com/world/total';
+      superagent.get(url2).then(data => {
+        covid.TotalConfirmed = data.body.TotalConfirmed;
+        covid.TotalDeaths = data.body.TotalDeaths;
+        covid.TotalRecovered = data.body.TotalRecovered;
+        if (listConfirm)
+          res.render('pages/show', { result: {listConfirm,listDate }});
+        else {
+          res.render('pages/error', { result: 'No data of this date yet' });
+        }
+
+      }).catch(() => {
+        res.render('pages/error', { result: 'No data found on totalApi' });
+      });
+
+    }
+    else {
+      res.render('pages/error', { result: 'No data of this date yet' });
+    }
 
 
 
 
-//     }).catch(() => {
-//       res.render('pages/error', { result: 'No data found ,Try again , Pls make sure you insert right input' });
-
-//     });
 
 
-//   }
+  }).catch(() => {
+    res.render('pages/error', { result: 'No data found ,Try again , Pls make sure you insert right input' });
+
+  });
+
+
+}
 
 
 

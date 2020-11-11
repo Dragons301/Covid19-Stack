@@ -22,10 +22,19 @@ header {
   margin-top: 20px;
   text-align: center;
   font-size: 35px;
-  display: none;
+  /* display: none; */
 
 }
 
+
+#canvas-container{
+  position: relative;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+  height:400px;
+  margin-bottom: 80px;
+  }
 /* #nav{
  margin-left: 850px;
 } */
@@ -43,7 +52,10 @@ fieldset {
 
 }
 
+footer{
+  clear: both;
 
+}
  
 .input-discoverPage{
 border: 0;
