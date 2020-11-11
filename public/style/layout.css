@@ -150,7 +150,17 @@ ul#section-listCovid{
     margin-left:35px;
     padding: 50px;
     margin-top:30px;
+    text-align: left            ;
 }
+.userInput{
+
+  margin: auto;
+
+}
+.userInput h3{
+display: inline-block;
+}
+/* }
 #section-listCovid li:nth-child(1) {
     width: 23.3em;
     -webkit-animation: type 2s steps(40, end);
@@ -168,7 +178,7 @@ ul#section-listCovid{
     animation-delay: 2s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
-  }
+  } */
   
   #toral-record{
     display: flex;
@@ -181,7 +191,7 @@ ul#section-listCovid{
     padding: 20px;
 
   }
-
+/* 
   #section-listCovid li:nth-child(3) {
     width: 20.3em;
     opacity: 0;
@@ -191,7 +201,7 @@ ul#section-listCovid{
     animation-delay: 4s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
-  }
+  } */
   
   @keyframes type {
     0% {
