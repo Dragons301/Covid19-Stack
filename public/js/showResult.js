@@ -1,5 +1,21 @@
 /* eslint-disable no-undef */
 'use strict';
+
+$('#select').on('change', () => {
+  let i = $('#select').val();
+  if (i === '1') {
+    $('.a').show();
+    $('.b').hide();
+    $('#canvas-container').hide();
+
+  }
+  else if (i === '2') {
+    $('.a').hide();
+    $('.b').show();
+    $('#show').hide();
+  }
+});
+
 let elemnts = $('#array').val();
 elemnts = elemnts.split(',');
 let listConfirm = [];
@@ -25,12 +41,7 @@ var myChart = new Chart(ctx, {
       label: '# of Confirm cases ',
       data: listConfirm,
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        ' #5df3e485'
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',

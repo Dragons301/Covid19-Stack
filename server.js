@@ -320,7 +320,7 @@ function News(data) {
 
   this.image = data.image;
   if (this.image === 'None')
-    this.image = 'https://via.placeholder.com/400';
+    this.image = 'https://cdn.dribbble.com/users/55871/screenshots/2158022/no_photo.jpg';
   this.url = data.url;
 }
 

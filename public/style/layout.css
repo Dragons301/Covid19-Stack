@@ -43,12 +43,14 @@ header{
 
 }
 fieldset {
-  margin-top: 100px;
   border: #004d66 solid 2px;
   border-width: 15px;
   border-radius: 84px;
   margin-bottom: 70px;
   border-bottom: 2px solid  rgb(117, 230, 218);
+width: 70%;
+margin: auto;
+margin-top: 100px;
 
 }
 
@@ -70,8 +72,29 @@ background-color: rgb(221, 221, 221);
 margin:15px;
 
 }
+
+.b{
+  display: none;
+
+}
+
+#form-discoverPage legend{
+  display: block;
+text-align: center;
+font-weight: bolder;
+padding: 10px;
+color: #05445E;
+
+}
  #form-discoverPage{
-  margin-left: 60px;
+   margin: auto;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   border-radius: 30px;
+   width: 80%;
+  border: 2px solid #05445E ;
+  text-align: center;
+  background-color: rgba(216, 214, 214, 0.199);
  }
 
 #ShowResult{
@@ -94,6 +117,7 @@ margin:15px;
 
 .section-covid{
     width:200px;
+    margin-top: 20px;
  
 }
 #covid-result{
@@ -156,6 +180,8 @@ ul#section-listCovid{
   height: auto;
   background-color: #FFF;
   /* margin-right: 300px; */
+  margin-bottom: 20px;
+  margin-right: 30px;
 }
 #world-img{
   display: block;
@@ -163,7 +189,8 @@ ul#section-listCovid{
 #title-world{
   color: #004d66;
   display: inline-block;
-  font-size: 80px;
+  font-size: 60px;
+  
 }
 
 #section-listCovid li{
@@ -181,7 +208,7 @@ ul#section-listCovid{
     text-align: left            ;
 }
 .userInput{
-
+  color:#05445E ;
   margin: auto;
 
 }
@@ -215,10 +242,11 @@ display: inline-block;
     position: relative;
     margin: auto;
     width: 100%;
-    height: 520px;
+    height: 550px;
     /* background-color: black; */
     /* margin-top: 100px; */
     padding: 20px;
+    
 
   }
 
