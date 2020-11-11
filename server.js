@@ -29,7 +29,6 @@ app.use(cors());
 app.get('/', HomePage);
 app.post('/search', getApiInfo);
 app.get('/search', showForm);
-app.get('/', HomePage);
 app.get('/news', getNews);
 app.post('/news', saveToDB);//fav
 app.get('/fav', showFav);
@@ -48,6 +47,7 @@ function signUp(req, res) {
 
 function logout(req, res) {
   userOn = null;
+  isOn=false;
   res.redirect('/');
 }
 
@@ -73,7 +73,8 @@ function signIn(req, res) {
       bcrypt.compare(pass, passDb, function (error, response) {
         if (response) {
           userOn = user;
-          res.redirect('/');
+          isOn=true;
+          res.render('pages/index',{on:isOn});
         }
         else {
           res.render('pages/signIn', { result: 'The password is incorrect!' });
@@ -101,7 +102,7 @@ function check(req, res) {
           client.query(insertSql, [user, hash]).then(() => {
 
             res.render('pages/sign', { result: 'You sign up successfully' });
-          }).catch((error) => {
+          }).catch(() => {
             res.render('pages/error', { result: 'Error in Line 68' });
           });
 
@@ -193,13 +194,13 @@ function saveToDB(req, res) {
 //     res.redirect('signIn');
 //   }
 // }
-
+let isOn=false;
 function showForm(req, res) {
   res.render('pages/show', { result: new Covid(0) });
 }
 
 function HomePage(req, res) {
-  res.render('pages/index');
+  res.render('pages/index',{on:isOn});
 
 }
 

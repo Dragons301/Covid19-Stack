@@ -1,57 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include ('../layout/head') %>
-  </head>
 
-  <body>
-    <%- include ('../layout/header') %>
-    <main>
-      <div id="div-news">
-        <% let count=0 %>
-        <% result.forEach (obj => { %> 
+<head>
+  <%- include ('../layout/head') %>
+</head>
 
-        <section id="news-section">
-          <a id="<%=count %>" class="news-title" name=" <%= obj.url %> ">
-            <h1 id="<%=count %>" class="news-title"><%= obj.title %></h1>
-          </a>
+<body>
+  <div id="popUp">
+    <section id="cancel">
+
+      <i id="cancelIcon" class="fa fa-times"></i>
+      <iframe id="url" src="" frameborder="10">
+
+      </iframe>
+    </section>
+
+
+
+  </div>
+  <%- include ('../layout/header') %>
+  <main>
+    <div id="div-news">
+      <% let count=0 %>
+      <% result.forEach (obj => { %>
+
+      <section id="news-section">
+
+        <section>
 
           <img id="news-img" src=" <%= obj.image %> " alt="" />
-          <p id="news-p"><%= obj.description %></p>
 
-          <form action="/news" method="POST">
-            <input type="hidden" value="<%= obj.title %>" name="title" />
-            <input type="hidden" value="<%= obj.url %>" name="url" />
-            <input type="hidden" value="<%= obj.image %>" name="image" />
-            <input
-              type="hidden"
-              value="<%= obj.description %>"
-              name="description"
-            />
+        </section>
+
+        <section class="rows">
+          <section>
+
+            <a id="<%=count %>" class="news-title" name=" <%= obj.url %> ">
+              <h1 id="<%=count %>" class="news-title"><%= obj.title %></h1>
+            </a>
+          </section>
+          <section>
+            <p id="news-p"><%= obj.description %></p>
+          </section>
+          <section>
+            <form action="/news" method="POST">
+              <input type="hidden" value="<%= obj.title %>" name="title" />
+              <input type="hidden" value="<%= obj.url %>" name="url" />
+              <input type="hidden" value="<%= obj.image %>" name="image" />
+              <input type="hidden" value="<%= obj.description %>" name="description" />
+            
             <button class="btn-secondary like-review">
               <i class="fa fa-heart"></i> add
+            </form>
             </button>
-          </form>
+          </section>
+         
         </section>
-        <%count=count+1 %>
-         <% }); %>
 
-        <iframe id="url" style="height: 500px; width: 500px;" src="" frameborder="1"></iframe>
-      </div>
-    </main>
-    <%- include ('../layout/footer') %>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+        
+      </section>
+      <%count=count+1 %>
+      <% }); %>
+
+    </div>
+  </main>
+  <%- include ('../layout/footer') %>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
     integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
     crossorigin="anonymous"></script> -->
-    <script src="../../public/js/showResult.js"></script>
-    <script>
-      $("a").on("click", (event) => {
-        let href = $(`#${event.target.id}`).attr("name");
-        // let id2 = $('iframe').attr(id)
-        $("#url").attr("src",href) ;
-        $("#url").show;
-      });
-    </script>
-  </body>
+  <script src="../../public/js/showResult.js"></script>
+  <script>
+    $("a").on("click", (event) => {
+      let href = $(`#${event.target.id}`).attr("name");
+      // let id2 = $('iframe').attr(id)
+      $("#url").attr("src", href);
+      $("#popUp").show();
+
+    });
+    $('#cancelIcon').on("click", (event) => {
+      $("#popUp").hide();
+    });
+  </script>
+</body>
+
 </html>

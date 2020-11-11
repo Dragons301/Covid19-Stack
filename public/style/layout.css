@@ -38,6 +38,8 @@ fieldset {
   border: #004d66 solid 2px;
   border-width: 15px;
   border-radius: 84px;
+  margin-bottom: 70px;
+  border-bottom: 2px solid  rgb(117, 230, 218);
 
 }
 
@@ -52,15 +54,18 @@ padding: 15px;
 background-color: whitesmoke;
 margin:auto;
 
+background-color: rgb(221, 221, 221);
+margin:15px;
+
 }
  #form-discoverPage{
   margin-left: 60px;
  }
 
 #ShowResult{
-    color: #77160d;
+    color: #05445E;
     font-weight: bold;
-    background-color: whitesmoke;
+    background-color: rgb(221, 221, 221);
     font-size:18px;
     cursor: pointer;
     font-weight: 300;
@@ -71,7 +76,7 @@ margin:auto;
 
   }
   #ShowResult:hover{
-      background-color:red;
+    background: linear-gradient(86deg, rgb(117, 230, 218), rgb(13, 241, 130));
       transform: scale(1,1.11);
   }
 
@@ -91,8 +96,11 @@ margin:auto;
     }
 
     .covid-p{
+
         border:1px solid whitesmoke;
         color: black;
+       color: #05445E;
+        border:1px solid #05445E;
         width: 300px;
         height: 50px;
         padding:15px;
@@ -102,10 +110,16 @@ margin:auto;
   
 .list-covid{
     color:#00F;
+       box-shadow: 1px 3px 5px #05445E;
+    }
+  
+   .list-covid{
+    display: inline-block;
+    color:rgb(32, 32, 32);
     /* padding:15px; */
 }
 strong{
-    color:  #77160d;
+    color:  #48b781;;
     
 }
 ul#section-listCovid{
@@ -125,14 +139,17 @@ ul#section-listCovid{
 }
 
 #section-listCovid li{
+
    display: block;
     /* border-right: .18em solid  #77160d; */
+    border-right: .18em solid  #05445E;
     font-family: "Courier";
     font-size: 30px;
     white-space: nowrap;
     overflow: hidden;  
     margin-left:35px;
     padding: 50px;
+    margin-top:30px;
 }
 #section-listCovid li:nth-child(1) {
     width: 23.3em;
@@ -181,7 +198,7 @@ ul#section-listCovid{
       width: 0;
     }
     99.9% {
-      border-right: .15em solid #77160d;
+      border-right: .15em solid #48b781;
     }
     100% {
       border: none;
@@ -193,7 +210,7 @@ ul#section-listCovid{
       width: 0;
     }
     99.9% {
-      border-right: .15em solid #77160d;
+      border-right: .15em solid #48b781;
     }
     100% {
       border: none;
@@ -208,7 +225,7 @@ ul#section-listCovid{
       opacity: 1;
     }
     99.9% {
-      border-right: .15em solid  #77160d;
+      border-right: .15em solid  #48b781;
     }
     100% {
       opacity: 1;
@@ -224,7 +241,7 @@ ul#section-listCovid{
       opacity: 1;
     }
     99.9% {
-      border-right: .15em solid #77160d;
+      border-right: .15em solid #48b781;
     }
     100% {
       opacity: 1;
@@ -267,4 +284,34 @@ ul#section-listCovid{
     }
   }
  
+/* iframe */
+#url{
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 90%;
+     height: 90%;
+     margin-top: 10px;
 
+ 
+}
+#cancel{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  height: 95%;
+  margin-top: 50px;
+
+}
+#cancelIcon{
+  position: fixed;
+  right: 5%;
+  top: 3%;
+  font-size: 30px;
+  color: red;
+}
+
+#cancel{
+  position: relative;
+}
