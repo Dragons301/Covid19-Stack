@@ -16,13 +16,13 @@ header {
     margin-top:20px;
 } 
 .nav-item:hover {
-  font-size: 30px;
   text-decoration: underline;
 }
 .userInput {
   margin-top: 20px;
   text-align: center;
   font-size: 35px;
+  display: none;
 
 }
 
@@ -160,17 +160,19 @@ ul#section-listCovid{
 .userInput h3{
 display: inline-block;
 }
-/* }
+ 
 #section-listCovid li:nth-child(1) {
+  
     width: 23.3em;
     -webkit-animation: type 2s steps(40, end);
     animation: type 2s steps(40, end);
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
+    
   }
   
   #section-listCovid li:nth-child(2) {
-    width: 17.3em;
+    width: 23.3em;
     opacity: 0;
     -webkit-animation: type2 2s steps(40, end);
     animation: type2 2s steps(40, end);
@@ -178,22 +180,22 @@ display: inline-block;
     animation-delay: 2s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
-  } */
+  } 
   
   #toral-record{
     display: flex;
     position: relative;
     margin: auto;
     width: 100%;
-    height: 500px;
+    height: 520px;
     /* background-color: black; */
     /* margin-top: 100px; */
     padding: 20px;
 
   }
-/* 
+
   #section-listCovid li:nth-child(3) {
-    width: 20.3em;
+    width: 23.3em;
     opacity: 0;
     -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
     animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
@@ -201,7 +203,7 @@ display: inline-block;
     animation-delay: 4s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
-  } */
+  } 
   
   @keyframes type {
     0% {
