@@ -15,17 +15,10 @@
             </iframe>
         </section>
 
-
-
     </div>
 
     <%- include ('../layout/header') %>
     <main>
-
-
-
-
-
         <% let count=0 %>
 
         <% result.forEach (obj => { %>
@@ -47,39 +40,22 @@
                 <section>
                     <p id="news-p"><%= obj.description %></p>
                 </section>
-                    <section>
-                        <form action="/fav/<%= obj.id%>?_method=DELETE" method="POST">
-                             <button class="delet-button">
+                <section>
+                    <form action="/fav/<%= obj.id%>?_method=DELETE" method="POST">
+                        <button class="delet-button">
                             <i class="fa fa-trash"></i> delete </button>
-                        </form>
-                    </section>
-            
+                    </form>
+                </section>
+
             </section>
         </section>
-
         <%count=count+1 %>
-
         <% }); %>
-
-
-
-
-
 
     </main>
     <%- include ('../layout/footer') %>
+    <script src="/js/popup.js"></script>
 
-    <script>
-        $("a").on("click", (event) => {
-            let href = $(`#${event.target.id}`).attr("name");
-            // let id2 = $('iframe').attr(id)
-            $("#url").attr("src", href);
-            $("#popUp").show();
-        });
-        $('#cancelIcon').on("click", (event) => {
-            $("#popUp").hide();
-        });
-    </script>
 </body>
 
 </html>

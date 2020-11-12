@@ -681,6 +681,10 @@ border-radius: 25px ;
   
 }
 
+.steps{
+  text-decoration: none;
+   color: white;
+}
 .atxt {
     color: white;
     background-color:#05445E;

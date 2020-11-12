@@ -2,34 +2,32 @@
 <html lang="en">
 
 <head>
-    <%- include ('../layout/head')  %>
+  <%- include ('../layout/head')  %>
 </head>
 
 <body>
-    <%- include ('../layout/header') %>
-    <main>
-        <div class="login-box">
-            <h1>Sign in</h1>
-     <form action="/signIn" method="POST">
+  <%- include ('../layout/header') %>
+  <main>
+    <div class="login-box">
+      <h1>Sign in</h1>
+      <form action="/signIn" method="POST">
         <div class="user-box">
-        <h2><%=result %></h2>
-         <!-- <label for="User">Username</label> -->
-         <input name="user" type="text"required placeholder="Username">
+          <h2><%=result %></h2>
+          <input name="user" type="text" required placeholder="Username">
         </div>
         <div class="user-box">
-         <!-- <label for="Password">Password</label> -->
-         <input name="pass" type="password"required placeholder="Password">
+          <input name="pass" type="password" required placeholder="Password">
 
         </div>
-      <button class="signIn-button">
-        Submit
-      </button>
+        <button class="signIn-button">
+          Submit
+        </button>
 
         <a class="signIn-button" href="/signUp">create account here</a>
-     </form>
+      </form>
     </div>
-    </main>
-    <%- include ('../layout/footer') %>
+  </main>
+  <%- include ('../layout/footer') %>
 </body>
 
 </html>
