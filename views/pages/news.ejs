@@ -48,17 +48,17 @@
               <input type="hidden" value="<%= obj.url %>" name="url" />
               <input type="hidden" value="<%= obj.image %>" name="image" />
               <input type="hidden" value="<%= obj.description %>" name="description" />
-            
-            <button class="btn-secondary like-review">
-              <i class="fa fa-heart"></i> add
+
+              <button class="btn-secondary like-review">
+                <i class="fa fa-heart"></i> add
             </form>
             </button>
           </section>
-         
+
         </section>
 
 
-        
+
       </section>
       <%count=count+1 %>
       <% }); %>
@@ -67,22 +67,8 @@
   </main>
   <%- include ('../layout/footer') %>
 
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-    integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
-    crossorigin="anonymous"></script> -->
-  <script src="../../public/js/showResult.js"></script>
-  <script>
-    $("a").on("click", (event) => {
-      let href = $(`#${event.target.id}`).attr("name");
-      // let id2 = $('iframe').attr(id)
-      $("#url").attr("src", href);
-      $("#popUp").show();
+  <script src="/js/popup.js"></script>
 
-    });
-    $('#cancelIcon').on("click", (event) => {
-      $("#popUp").hide();
-    });
-  </script>
 </body>
 
 </html>

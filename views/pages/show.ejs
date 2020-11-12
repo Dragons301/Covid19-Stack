@@ -8,14 +8,14 @@
 <body>
     <%- include ('../layout/header') %>
     <main>
-    <div id="selecDiv">
-        <label for="">Choose Way to search</label>
-        <select name="" id="select">
-            <option selected value="0">...</option>
-            <option  value="1">specific day</option>
-            <option value="2">specific period</option>
-        </select>
-    </div>
+        <div id="selecDiv">
+            <label for="">Choose Way to search</label>
+            <select name="" id="select">
+                <option selected value="0">...</option>
+                <option value="1">specific day</option>
+                <option value="2">specific period</option>
+            </select>
+        </div>
         <form id="form-discoverPage" action="/search" method="POST" class="a">
             <legend>Search for a specific day</legend>
             <label>Search Country : </label>
@@ -106,7 +106,6 @@
 
         </div>
 
-
         <%if(result.listConfirm)
         {%>
             <section id="canvas-container">
@@ -114,29 +113,14 @@
             </section>
             <%}%>
 
-
-       
-
-    
-      
-
         <input type="hidden" value="<%=result.listConfirm%>" id="array">
             <input type="hidden" value="<%=result.listDate%>" id="array2">
 
     </main>
 
-
-
     <%- include ('../layout/footer') %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="js/showResult.js"></script>
-    <!-- <script>
-        $('#ShowResult').on('click',()=>{
-            $('.userInput').show();
-            event.preventDefault();
-
-        });
-    </script> -->
 
 
 </body>

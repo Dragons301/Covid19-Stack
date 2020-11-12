@@ -15,23 +15,23 @@
       <section id="how-sec">
         <ul class="how-ul">
           <li class="">
-            <a style="text-decoration: none; color: white" href="#img-container">How to wear mask</a>
+            <a class="steps" href="#img-container">How to wear mask</a>
           </li>
           <li class="">
-            <a style="text-decoration: none; color: white" href="#img-hand">
+            <a class="steps" href="#img-hand">
               How to clean hands</a>
           </li>
           <li class="">
-            <a style="text-decoration: none; color: white" href="#img-cough">How to sneeze</a>
+            <a class="steps" href="#img-cough">How to sneeze</a>
           </li>
           <li class="">
-            <a style="text-decoration: none; color: white" href="#vid1">Why social distance</a>
+            <a class="steps" href="#vid1">Why social distance</a>
           </li>
           <li class="">
-            <a style="text-decoration: none; color: white" href="#vid2">Can Mask Protect us</a>
+            <a class="steps" href="#vid2">Can Mask Protect us</a>
           </li>
           <li class="">
-            <a style="text-decoration: none; color: white" href="#vid3">7 important steps</a>
+            <a class="steps" href="#vid3">7 important steps</a>
           </li>
         </ul>
       </section>
@@ -69,95 +69,8 @@
 
   </main>
   <%- include ('../layout/footer') %>
-  <script>
-    let maskClicklEl = $(".how-ul li")[0];
-    let cleanClickkEl = $(".how-ul li")[1];
-    let sneezClicklEl = $(".how-ul li")[2];
-    let socialDistance = $(".how-ul li")[3];
-    let vid2 = $(".how-ul li")[4];
-    let vid3 = $(".how-ul li")[5];
 
-    $(socialDistance).on("click", () => {
-      $("#defult").hide();
-      $("#img-hand").hide();
-      $("#img-cough").hide();
-      $("#img-mask").hide();
-      $("video").slideDown();
-    });
-    $(maskClicklEl).on("click", () => {
-      console.log(maskClicklEl);
-      $("video").get(0).pause();
-      $("video").get(0).currentTime = 0;
-      $("video").get(1).pause();
-      $("video").get(1).currentTime = 0;
-      $("video").get(2).pause();
-      $("video").get(2).currentTime = 0;
-      $(".img-select,#defult").hide();
-      $("#img-mask").slideDown();
-    });
-
-    $(cleanClickkEl).on("click", () => {
-      console.log(cleanClickkEl);
-      $("video").get(0).pause();
-      $("video").get(0).currentTime = 0;
-      $("video").get(1).pause();
-      $("video").get(1).currentTime = 0;
-      $("video").get(2).pause();
-      $("video").get(2).currentTime = 0;
-      $(".img-select,#defult").hide();
-      $("#img-hand").slideDown();
-    });
-
-    $(sneezClicklEl).on("click", () => {
-      console.log(sneezClicklEl);
-      $("video").get(0).pause();
-      $("video").get(0).currentTime = 0;
-      $("video").get(1).pause();
-      $("video").get(1).currentTime = 0;
-      $("video").get(2).pause();
-      $("video").get(2).currentTime = 0;
-      $(".img-select,#defult").hide();
-      $("#img-cough").slideDown();
-    });
-
-    $(socialDistance).on("click", () => {
-      console.log(socialDistance);
-      $("video").get(0).pause();
-      $("video").get(0).currentTime = 0;
-      $("video").get(1).pause();
-      $("video").get(1).currentTime = 0;
-      $("video").get(2).pause();
-      $("video").get(2).currentTime = 0;
-      $(".img-select,#defult").hide();
-      $("#vid1").slideDown();
-    });
-
-    $(vid2).on("click", () => {
-      console.log(socialDistance);
-      $("video").get(0).pause();
-      $("video").get(0).currentTime = 0;
-      $("video").get(1).pause();
-      $("video").get(1).currentTime = 0;
-      $("video").get(2).pause();
-      $("video").get(2).currentTime = 0;
-      $(".img-select,#defult").hide();
-      $("#vid2").slideDown();
-    });
-
-    $(vid3).on("click", () => {
-      console.log(socialDistance);
-      $("video").get(0).pause();
-      $("video").get(0).currentTime = 0;
-      $("video").get(1).pause();
-      $("video").get(1).currentTime = 0;
-      $("video").get(2).pause();
-      $("video").get(2).currentTime = 0;
-      $(".img-select,#defult").hide();
-      $("#vid3").slideDown();
-    });
-  </script>
-
-  <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+  <script src="/js/Page1Control.js"></script>
 </body>
 
 </html>
