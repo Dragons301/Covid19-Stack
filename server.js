@@ -22,7 +22,8 @@ app.use(express.urlencoded({
 app.use(methodOverride('_method'));
 const pg = require('pg');
 const Database = process.env.DATABASE_URL;
-const client = new pg.Client(Database);
+// const client = new pg.Client(Database);
+const client = new pg.Client({ connectionString: process.env.DATABASE_URL,   ssl: { rejectUnauthorized: false } });
 let userOn;
 app.use(cors());
 //--------------------------
